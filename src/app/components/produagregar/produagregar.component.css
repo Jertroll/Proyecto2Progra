@@ -1,0 +1,59 @@
+/* Estilo para el contenedor principal */
+.col-md-12 {
+    margin-top: 4rem; /* Espacio en la parte superior del contenedor */
+}
+
+/* Estilo para el título del formulario */
+h3 {
+    color: black;
+    font-size: 1.5rem; /* Tamaño del título */
+    text-align: center;
+    margin-bottom: 1rem; /* Espacio en la parte inferior del título */
+}
+
+/* Estilo para los mensajes de estado */
+.alert {
+    margin-bottom: 1rem; /* Espacio en la parte inferior de cada alerta */
+}
+
+.alert-success {
+    color: #155724; /* Color del texto para éxito */
+    background-color: #d4edda; /* Color de fondo para éxito */
+    border-color: #c3e6cb; /* Color del borde para éxito */
+}
+
+.alert-warning {
+    color: #856404; /* Color del texto para advertencia */
+    background-color: #fff3cd; /* Color de fondo para advertencia */
+    border-color: #ffeeba; /* Color del borde para advertencia */
+}
+
+.alert-danger {
+    color: #721c24; /* Color del texto para error */
+    background-color: #f8d7da; /* Color de fondo para error */
+    border-color: #f5c6cb; /* Color del borde para error */
+}
+
+/* Estilo para el formulario */
+form {
+    
+    max-width: 60%; /* Ancho máximo del formulario */
+    margin: auto; /* Centrar el formulario */
+}
+
+/* Estilo para los campos de entrada */
+.form-control {
+    margin-bottom: 1rem; /* Espacio en la parte inferior de cada campo */
+    border: 2px solid #446149; /* Borde de 2px de ancho y color verde */
+    border-radius: 0.25rem; /* Borde redondeado */
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; /* Efecto de transición suave */
+}
+.form-control:focus {
+    border-color: #28a745; /* Cambio de color del borde al obtener el foco */
+    outline: 0; /* Eliminar el contorno */
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Sombra alrededor del borde al obtener el foco */
+}
+/* Estilo para el texto de ayuda de los campos inválidos */
+.invalid-feedback {
+    color: #dc3545; /* Color del texto de ayuda para campos inválidos */
+}

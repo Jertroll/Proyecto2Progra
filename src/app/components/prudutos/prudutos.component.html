@@ -1,0 +1,69 @@
+<div>
+    <h2>Productos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Talla</th>
+          <th>Estado</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td>{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>{{ producto.precio }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.talla }}</td>
+          <td>{{ producto.estado }}</td>
+          <td>{{ producto.imagen }}</td>
+          <td>
+            <button (click)="actualizarProducto(producto)">Editar</button>
+            <button (click)="eliminarProducto(producto)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <h2>{{ editando ? 'Editar Producto' : 'Agregar Producto' }}</h2>
+    <span>
+      <ng-container *ngIf="status === 0">
+        <div class="alert alert-success"><p>Actualización exitosa!</p></div>
+      </ng-container>
+      <ng-container *ngIf="status === 1">
+        <div class="alert alert-warning"><p>No se pudo actualizar el Producto!</p></div>
+      </ng-container>
+      <ng-container *ngIf="status === 2">
+        <div class="alert alert-danger"><p>Error de servidor!</p></div>
+      </ng-container>
+    </span>
+    <form #productoForm="ngForm" (ngSubmit)="onSubmit(productoForm)" >
+      <input type="hidden" [(ngModel)]="producto.id" name="id">
+  
+      <label for="nombre">Nombre:</label>
+      <input type="text" [(ngModel)]="producto.nombre" name="nombre" required>
+  
+      <label for="precio">Precio:</label>
+      <input type="number" [(ngModel)]="producto.precio" name="precio" required>
+  
+      <label for="descripcion">Descripción:</label>
+      <input type="text" [(ngModel)]="producto.descripcion" name="descripcion" required>
+  
+      <label for="talla">Talla:</label>
+      <input type="text" [(ngModel)]="producto.talla" name="talla" required>
+  
+      <label for="estado">Estado:</label>
+      <input type="text" [(ngModel)]="producto.estado" name="estado" required>
+  
+      <label for="imagen">Imagen:</label>
+      <input type="text" [(ngModel)]="producto.imagen" name="imagen" required>
+  
+      <button type="submit">Actualizar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,70 @@
+<div class="col-md-12 mt-4">
+  <h3>Registro de Producto</h3>
+  <span>
+    @switch (status) {
+      @case (0) {
+          <div class="alert alert-success"><p>Registro exitoso!</p></div>
+      }
+      @case (1) {
+          <div class="alert alert-warning"><p>No se pudo agregar el Producto!</p></div>
+      }
+      @case (2) {
+          <div class="alert alert-danger"><p>Error de servidor!</p></div>
+      }
+    }
+  </span>
+  <form class="col-md-8 mx-auto" #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <div class="form-group">
+      <label for="id">Codigo</label>
+      <input id="id" type="text" #id="ngModel" class="form-control" name="id"
+      pattern="^[0-9]+$" [(ngModel)]="producto.id"/>
+      @if(!id.valid && id.touched){ 
+          <small class="invalid-feedback d-block">Formato no valido</small>
+      }
+      <label for="nombre">Nombre</label>
+      <input id="nombre" type="text" #nombre="ngModel" class="form-control" name="nombre"
+      pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$"  [(ngModel)]="producto.nombre"/>
+      @if(!nombre.valid && nombre.touched){ 
+          <small class="invalid-feedback d-block">Formato no valido</small>
+      }
+      <label for="precio">Precio</label>
+      <input id="precio" type="number" #precio="ngModel" class="form-control" name="precio"
+      pattern="^[0-9]+$" [(ngModel)]="producto.precio"/>
+      @if(!precio.valid && precio.touched){ 
+        <small class="invalid-feedback d-block">Precio es requerido y debe ser un número entero</small>
+      }
+      
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" #descripcion="ngModel" class="form-control" name="descripcion"
+      [(ngModel)]="producto.descripcion"></textarea>
+      @if(!descripcion.valid && descripcion.touched){ 
+        <small class="invalid-feedback d-block">Descripción es requerida</small>
+      }
+       
+      <label for="talla">Talla</label>
+      <select id="talla" #talla="ngModel" class="form-control" name="talla" required [(ngModel)]="producto.talla">
+        <option value="XS">XS</option>
+        <option value="S">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+        <option value="XXL">XXL</option>
+      </select>
+      
+      <label for="estado">Estado</label>
+      <select id="estado" #estado="ngModel" class="form-control" name="estado" required [(ngModel)]="producto.estado">
+      <option value="disponible">Disponible</option>
+      <option value="no disponible">No Disponible</option>
+      </select>
+
+      <label for="imagen">Imagen URL</label>
+      <input id="imagen" type="text" #imagen="ngModel" class="form-control" name="imagen"
+      [(ngModel)]="producto.imagen"/>
+      @if(!imagen.valid && imagen.touched){ 
+        <small class="invalid-feedback d-block">Descripción es requerida</small>
+      }
+
+    </div>        
+    <input type="submit" class="btn btn-primary mt-2" value="Guardar" [disabled]="productForm.invalid">
+  </form>
+</div>

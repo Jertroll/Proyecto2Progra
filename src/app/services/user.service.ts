@@ -44,6 +44,14 @@ getIdentityFromAPI():Observable<any>{
     
 }           
 
-
+create(user:User):Observable<any>{
+    let userJson=JSON.stringify(user);
+    let params='data='+userJson;
+    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
+    let options={
+        headers
+    }
+    return this._http.post(this.urlAPI+'user/store',params,options);
+}
 
 }

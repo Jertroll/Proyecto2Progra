@@ -2,8 +2,9 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { server } from "./global";
 import { Producto } from "../models/producto";
-import { Observable } from "rxjs";
-import { MatDialogModule } from '@angular/material/dialog';
+import { Observable,throwError } from "rxjs";
+import { map,catchError } from 'rxjs/operators';
+
 @Injectable({
     providedIn:'root'
 })
@@ -48,5 +49,15 @@ export class ProductoService {
     eliminarProducto(id: number): Observable<any> {
         return this._http.delete(`${this.urlAPI}producto/${id}`);
     }
+    buscarProductoPorId(id: number): Observable<Producto> {
+        return this._http.get<{ status: number, message: string, producto: Producto }>(`${this.urlAPI}producto/${id}`)
+          .pipe(
+            map(response => response.producto), // Extraer el objeto de producto del cuerpo de la respuesta
+            catchError(error => {
+              console.error('Error al buscar producto por ID:', error);
+              return throwError(error); // Propagar el error
+            })
+          );
+      }
     
 }

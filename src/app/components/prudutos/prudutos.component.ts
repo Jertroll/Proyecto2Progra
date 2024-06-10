@@ -4,17 +4,19 @@ import { CommonModule } from '@angular/common';
 import { Producto } from '../../models/producto';
 import { ProductoService } from '../../services/producto.service';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,MatIconModule],
   templateUrl: './prudutos.component.html',
   styleUrls: ['./prudutos.component.css']
 })
 export class PrudutosComponent implements OnInit {
   status: number;
+  searchTerm: string = '';
   productos: Producto[];
   producto: Producto;
   editando: boolean = false;
@@ -47,7 +49,7 @@ export class PrudutosComponent implements OnInit {
 
   actualizarProducto(producto: Producto): void {
     const dialogRef = this.dialog.open(EditProductDialogComponent, {
-      width: '300px',
+      width: '600px',
       data: { ...producto }
     });
 
@@ -83,6 +85,30 @@ export class PrudutosComponent implements OnInit {
     }
   }
 
+  search(): void {
+    if (this.searchTerm.trim() !== '') {
+      // Llamar al servicio para buscar el producto por su ID
+      this.productoService.buscarProductoPorId(parseInt(this.searchTerm, 10)).subscribe(
+        producto => {
+          console.log('Producto encontrado:', producto); // Agregar esta línea para depurar
+          if (producto) {
+            // Producto encontrado, actualizar la lista de productos
+            this.productos = [producto];
+          } else {
+            // Producto no encontrado, vaciar la lista de productos
+            this.productos = [];
+          }
+        },
+        error => {
+          console.error('Error al buscar producto por ID:', error);
+          // Manejo de errores, si es necesario
+        }
+      );
+    } else {
+      // Si el término de búsqueda está vacío, mostrar todos los productos
+      this.obtenerProductos();
+    }
+  }
   resetForm(): void {
     this.producto = new Producto(0, "", 0, "", "", "disponible", "");
     this.editando = false;

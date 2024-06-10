@@ -1,0 +1,27 @@
+<div>
+    <h2>Compras</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuario</th>
+          <th>idCarrito</th>
+          <th>Lista de productos</th>
+          <th>Estado de la compra</th>
+          <th>fecha</th>
+          <th>hora</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let compra of compras">
+            <td>{{ compra.idCompra }}</td>
+            <td>{{ compra.idUsuario }}</td>
+            <td>{{ compra.idCarrito }}</td>
+            <td>{{ compra.ListaProduc }}</td>
+            <td>{{ compra.estadoCompra}}</td>
+            <td>{{ compra.fecha }}</td>
+            <td>{{ compra.hora }}</td>
+          </tr>
+      </tbody>
+    </table>
+  </div>

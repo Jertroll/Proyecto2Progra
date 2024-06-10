@@ -29,7 +29,7 @@ export class EditProductDialogComponent {
      this._productoService.actualizarProducto(this.data).subscribe({
         next: (response) => {
           console.log(response);
-          if (response.status === 201) {
+          if (response.status === 200) {
             form.reset();
             this.changeStatus(0);
             this.dialogRef.close(response);

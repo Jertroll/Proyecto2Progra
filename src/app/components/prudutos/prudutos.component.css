@@ -44,13 +44,13 @@ table {
     outline: none;
   }
   
-  button.edit {
-    background-color: #4CAF50;
+  .edit {
+    background-color:  #40a743;
     color: white;
   }
   
-  button.delete {
-    background-color: #f44336;
+  .delete {
+    background-color:#d82013;
     color: white;
   }
   
@@ -110,4 +110,7 @@ table {
     background-color: #f2dede;
     color: #a94442;
   }
-  
+  .buscar{
+    background-color: #446149;
+    color: white;
+  }

@@ -6,6 +6,7 @@ import { ProductoService } from '../../services/producto.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component';
+import { server } from '../../services/global';
 
 @Component({
   selector: 'app-productos',
@@ -20,11 +21,13 @@ export class PrudutosComponent implements OnInit {
   productos: Producto[];
   producto: Producto;
   editando: boolean = false;
+  public url:string;
 
   constructor(private productoService: ProductoService, public dialog: MatDialog) {
     this.status = -1;
     this.productos = [];
     this.producto = new Producto(0, "", 0, "", "", "disponible", "");
+    this.url=server.url
   }
 
   ngOnInit(): void {
@@ -109,6 +112,7 @@ export class PrudutosComponent implements OnInit {
       this.obtenerProductos();
     }
   }
+  
   resetForm(): void {
     this.producto = new Producto(0, "", 0, "", "", "disponible", "");
     this.editando = false;

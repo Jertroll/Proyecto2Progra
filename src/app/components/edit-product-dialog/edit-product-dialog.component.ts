@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { timer } from 'rxjs';
 import { ProductoService } from '../../services/producto.service';
+import { server } from '../../services/global';
 @Component({
   selector: 'app-edit-product-dialog',
   standalone: true,
@@ -12,13 +13,16 @@ import { ProductoService } from '../../services/producto.service';
 })
 export class EditProductDialogComponent {
   public status: number;
-
+  public fileName:string;
+  public url:string;
   constructor(
     public dialogRef: MatDialogRef<EditProductDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _productoService:ProductoService // Inyectar el servicio
   ) {
     this.status = -1;
+    this.fileName="";
+    this.url=server.url
   }
 
   onCancel(): void {
@@ -42,6 +46,27 @@ export class EditProductDialogComponent {
           console.error(error);
         }
       });
+  }
+  uploadImage(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append('file0', file);
+
+      this._productoService.uploadImage(formData).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.status === 201) {
+            this.data.imagen = response.filename;
+            this.url = `producto/{id}/update-imagen${response.filename}`;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    }
   }
 
   changeStatus(st: number){

@@ -59,5 +59,8 @@ export class ProductoService {
             })
           );
       }
+      uploadImage(formData: FormData): Observable<any> {
+        return this._http.post<any>(this.urlAPI+'producto/upload', formData);
+      }
     
 }

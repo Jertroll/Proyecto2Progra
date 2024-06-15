@@ -39,7 +39,10 @@
       </div>
       <div class="form-group">
         <label for="imagen">Imagen:</label>
-        <input type="text" [(ngModel)]="data.imagen" name="imagen" required>
+        <input type="file" class="file-input" (change)="uploadImage($event)" #fileUpload/>
+      <button class="btn btn-outline-secondary" (click)="fileUpload.click()">
+          <i>+</i>           
+      </button> {{fileName || "Archivo no ha sido seleccionado"}}
       </div>
     </div>
 

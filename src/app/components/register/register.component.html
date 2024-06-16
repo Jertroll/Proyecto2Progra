@@ -60,6 +60,12 @@
             <label for="password">Contraseña</label>
             <input id="password" type="password" #password="ngModel" class="form-control" name="password"
                 [(ngModel)]="user.password">
+
+                <label>Selecione una imagen</label><br>
+                <input type="file" class="file-input" (change)="uploadImage($event)" #fileUpload/>
+                <button class="btn btn-outline-secondary" (click)="fileUpload.click()">
+                    <i>+</i>           
+                </button> {{fileName || "Archivo no ha sido seleccionado"}}
         </div>        
         <input type="submit" class="btn btn-primary mt-2" value="Guardar" [disabled]="signupForm.invalid">
     </form>

@@ -14,12 +14,13 @@ import { RouterModule } from '@angular/router';
 export class RegisterComponent {
   public user:User;
   public status:number;
-
+  public fileName:string;
   constructor(
     private _userService:UserService
   ){
     this.status=-1;
-    this.user=new User(0,"","",1,"",1,"","","")
+    this.user=new User(0,"","",1,"",1,"","","","")
+    this.fileName="";
   }
 
   onSubmit(form:any){
@@ -39,6 +40,27 @@ export class RegisterComponent {
       }
     })
   }
+  uploadImage(event:any){
+    const file: File = event.target.files[0];
+    if (file) {
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append('file0', file);
+
+      this._userService.uploadImage(formData).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if (response.status === 201) {
+            this.user.imagen = response.filename;
+          }
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    }
+  }
+
   changeStatus(st:number){
     this.status=st;
     let countdown=timer(5000);

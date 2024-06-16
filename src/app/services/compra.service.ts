@@ -12,7 +12,7 @@ export class CompraService {
   constructor(
       private _http:HttpClient
   ){
-      this.urlAPI=server.url
+      this.urlAPI=server.Url
   }
   obtenerCompras(): Observable<{ status: number, message: string, data:Compra[] }> {
       return this._http.get<{ status: number, message: string, data: Compra[] }>(`${this.urlAPI}compra`);

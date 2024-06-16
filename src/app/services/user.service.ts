@@ -2,9 +2,9 @@
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { server } from "./global";
-import { Observable } from "rxjs";
+import { Observable, throwError } from "rxjs";
 import { User } from "../models/user";
-
+import { map,catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn:'root'
@@ -53,5 +53,19 @@ create(user:User):Observable<any>{
     }
     return this._http.post(this.urlAPI+'user/register',params,options);
 }
+
+buscarUserPorId(id: number): Observable<User> {
+    return this._http.get<{ status: number, message: string, user: User }>(`${this.urlAPI}user/${id}`)
+      .pipe(
+        map(response => response.user), // Extraer el objeto de producto del cuerpo de la respuesta
+        catchError(error => {
+          console.error('Error al buscar usuario por ID:', error);
+          return throwError(error); // Propagar el error
+        })
+      );
+  }
+  uploadImage(formData: FormData): Observable<any> {
+    return this._http.post<any>(this.urlAPI+'user/upload', formData);
+  }
 
 }

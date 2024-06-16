@@ -21,7 +21,7 @@ constructor(
   private _routes:ActivatedRoute
 ){
 
-  this.user=new User(1,"","",1,"",1,"","","")
+  this.user=new User(1,"","",1,"",1,"","","","")
 }
 
 

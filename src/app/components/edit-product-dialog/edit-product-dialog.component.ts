@@ -22,7 +22,7 @@ export class EditProductDialogComponent {
   ) {
     this.status = -1;
     this.fileName="";
-    this.url=server.url
+    this.url=server.Url
   }
 
   onCancel(): void {

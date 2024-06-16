@@ -27,7 +27,7 @@ export class PrudutosComponent implements OnInit {
     this.status = -1;
     this.productos = [];
     this.producto = new Producto(0, "", 0, "", "", "disponible", "");
-    this.url=server.url
+    this.url=server.Url
   }
 
   ngOnInit(): void {

@@ -5,6 +5,7 @@ import { Producto } from "../models/producto";
 import { Observable,throwError } from "rxjs";
 import { map,catchError } from 'rxjs/operators';
 
+
 @Injectable({
     providedIn:'root'
 })
@@ -13,7 +14,7 @@ export class ProductoService {
     constructor(
         private _http:HttpClient
     ){
-        this.urlAPI=server.url
+        this.urlAPI=server.Url
     }
     obtenerProductos(): Observable<{ status: number, message: string, data: Producto[] }> {
         return this._http.get<{ status: number, message: string, data: Producto[] }>(`${this.urlAPI}producto`);

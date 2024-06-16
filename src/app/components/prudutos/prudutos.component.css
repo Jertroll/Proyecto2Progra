@@ -1,0 +1,116 @@
+/* Estilo para la tabla */
+h2 {
+    color: black;
+    font-size: 2rem; /* Tamaño del título */
+    text-align: center;
+    margin-bottom: 1rem; /* Espacio en la parte inferior del título */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  thead {
+    background-color: #f2f2f2;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #446149;
+    color: white;
+  }
+  
+  /* Estilo para los botones */
+  button {
+    padding: 5px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .edit {
+    background-color:  #40a743;
+    color: white;
+  }
+  
+  .delete {
+    background-color:#d82013;
+    color: white;
+  }
+  
+  /* Estilo para los botones de acción */
+  td > button {
+    display: inline-block;
+    width: auto;
+  }
+  
+  /* Estilo para el formulario */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin: 5px 0 2px;
+  }
+  
+  input {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    opacity: 0.8;
+  }
+  
+  .alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+  }
+  
+  .alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+  }
+  
+  .alert-warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+  }
+  
+  .alert-danger {
+    background-color: #f2dede;
+    color: #a94442;
+  }
+  .buscar{
+    background-color: #446149;
+    color: white;
+  }

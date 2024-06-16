@@ -1,0 +1,41 @@
+<div>
+  <input type="text" placeholder="Buscar producto..." [(ngModel)]="searchTerm">
+  <button mat-button class="buscar" (click)="search()"><mat-icon>search</mat-icon>Buscar</button>
+    <h2>Productos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Descripción</th>
+          <th>Talla</th>
+          <th>Estado</th>
+          <th>Imagen</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="productos && productos.length > 0">
+          <tr *ngFor="let producto of productos">
+            <td>{{ producto.id }}</td>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.talla }}</td>
+            <td>{{ producto.estado }}</td>
+            <td><img src="{{url+'producto/getimage/'+producto.imagen}}" class="imagen" width="100"></td>
+            <td>
+              <button class="edit" (click)="actualizarProducto(producto)"><mat-icon>edit</mat-icon>Editar</button>
+              <button class="delete" (click)="eliminarProducto(producto)"><mat-icon>delete</mat-icon>Eliminar</button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="!productos || productos.length === 0">
+          <tr>
+            <td colspan="8">No hay productos disponibles.</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>

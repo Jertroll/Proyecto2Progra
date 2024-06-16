@@ -1,0 +1,54 @@
+<h4 mat-dialog-title>Editar Producto</h4>
+<div class="editProdu"  mat-dialog-content>
+  <span>
+    @switch (status) {
+      @case (0) {
+          <div class="alert alert-success"><p>Registro exitoso!</p></div>
+      }
+      @case (1) {
+          <div class="alert alert-warning"><p>No se pudo actualizar el Producto!</p></div>
+      }
+      @case (2) {
+          <div class="alert alert-danger"><p>Error de servidor!</p></div>
+      }
+    }
+  </span>
+  <form class="col-md-8 mx-auto" #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
+    <input id="id" type="text" [(ngModel)]="data.id" name="id" hidden>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" [(ngModel)]="data.nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input type="number" [(ngModel)]="data.precio" name="precio" required>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <input type="text" [(ngModel)]="data.descripcion" name="descripcion" required>
+      </div>
+      <div class="form-group">
+        <label for="talla">Talla:</label>
+        <input type="text" [(ngModel)]="data.talla" name="talla" required>
+      </div>
+      <div class="form-group">
+        <label for="estado">Estado:</label>
+        <input type="text" [(ngModel)]="data.estado" name="estado" required>
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input type="file" class="file-input" (change)="uploadImage($event)" #fileUpload/>
+      <button class="btn btn-outline-secondary" (click)="fileUpload.click()">
+          <i>+</i>           
+      </button> {{fileName || "Archivo no ha sido seleccionado"}}
+      </div>
+    </div>
+
+    <div mat-dialog-actions>
+      <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+      <button mat-button type="submit">Actualizar</button>
+    </div>
+  </form>
+</div>

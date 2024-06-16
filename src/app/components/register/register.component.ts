@@ -3,17 +3,18 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../models/user';
 import { timer } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-
-  public status:number;
   public user:User;
+  public status:number;
+
   constructor(
     private _userService:UserService
   ){
@@ -22,7 +23,7 @@ export class RegisterComponent {
   }
 
   onSubmit(form:any){
-    this.user.role='user';
+    this.user.rol='user';
     this._userService.create(this.user).subscribe({
       next:(response)=>{
         console.log(response);

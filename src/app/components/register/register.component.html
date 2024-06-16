@@ -14,16 +14,17 @@
     }
     </span>
     <form class="col-md-8 mx-auto" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
-        <div class="form-group">            
+        <div class="form-group">     
+
             <label for="nombre">Nombre</label>
-            <input id="nombre" type="text" #nombre="ngModel" class="form-control" nombre="nombre" 
+            <input id="nombre" type="text" #nombre="ngModel" class="form-control" name="nombre" 
                 pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$" [(ngModel)]="user.nombre"/>
             @if(!nombre.valid && nombre.touched){
                 <small class="invalid-feedback d-block">Formato invalido</small>
             } 
             
             <label for="apellido">Apellido</label>
-            <input id="apellido" type="text" #apellido="ngModel" class="form-control" apellido="apellido" 
+            <input id="apellido" type="text" #apellido="ngModel" class="form-control" name="apellido" 
                 pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$" [(ngModel)]="user.apellido"/>
             @if(!apellido.valid && apellido.touched){
                 <small class="invalid-feedback d-block">Formato invalido</small>

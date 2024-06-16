@@ -51,7 +51,7 @@ create(user:User):Observable<any>{
     let options={
         headers
     }
-    return this._http.post(this.urlAPI+'user/store',params,options);
+    return this._http.post(this.urlAPI+'user/register',params,options);
 }
 
 }

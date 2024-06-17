@@ -1,0 +1,49 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.catalogo {
+  margin-top: 20px;
+}
+
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.producto {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.contenido {
+  display: flex;
+}
+
+.imagen-container {
+  flex: 0 0 100px; /* Ancho fijo para la imagen */
+  margin-right: 20px;
+}
+
+.imagen {
+  width: 200px; /* Ajusta según tus necesidades */
+  height: 200px; /* Ajusta según tus necesidades */
+  object-fit: cover; /* Asegura que la imagen se ajuste al contenedor manteniendo su proporción */
+  border-radius: 8px;
+}
+
+.detalle {
+  flex: 1; /* El resto del espacio disponible para el detalle */
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-agregar {
+  align-self: flex-end; /* Alinea el botón al final del contenedor de detalle */
+}

@@ -62,5 +62,8 @@ export class ProductoService {
       uploadImage(formData: FormData): Observable<any> {
         return this._http.post<any>(this.urlAPI+'producto/upload', formData);
       }
+      buscarNombre(nombre: string): Observable<any> {
+        return this._http.get(`${this.urlAPI}producto/buscar/${nombre}`);
+      }
     
 }

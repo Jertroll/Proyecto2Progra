@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="header">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngIf="carrito.length > 0; else emptyCart">
+        <mat-card *ngFor="let producto of carrito" class="producto-en-menu">
+          <mat-card-content class="producto-en-carrito">
+            <img [src]="url + 'producto/getimage/' + producto.imagen" class="imagen" alt="{{ producto.nombre }}">
+            <div class="detalle">
+              <h3>{{ producto.nombre }}</h3>
+              <p>Precio: ${{ producto.precio }}</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+      <ng-template #emptyCart>
+        <p>El carrito está vacío.</p>
+      </ng-template>
+    </mat-menu>
+  </div>
+
+  <div class="catalogo">
+    <input type="text" placeholder="Buscar prenda..." [(ngModel)]="buscaNom">
+    <button mat-button class="buscar" (click)="buscar()"><mat-icon>search</mat-icon>Buscar</button>
+    <div class="productos">
+      <mat-card class="producto" *ngFor="let producto of productosFiltrados">
+        <mat-card-content class="contenido">
+          <div class="imagen-container">
+            <img [src]="url + 'producto/getimage/' + producto.imagen" class="imagen" alt="{{ producto.nombre }}">
+          </div>
+          <div class="detalle">
+            <h3>{{ producto.nombre }}</h3>
+            <p>Descripcion:{{ producto.descripcion }}</p>
+            <p>Estado:{{ producto.estado }}</p>
+            <p>Talla:{{ producto.talla }}</p>
+            <p>Precio: ${{ producto.precio }}</p>
+            <button mat-raised-button color="primary" class="btn-agregar" (click)="agregarAlCarrito(producto)">Agregar al Carrito</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

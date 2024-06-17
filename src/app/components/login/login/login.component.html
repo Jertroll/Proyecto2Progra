@@ -7,11 +7,14 @@
     <div class="container main">
         <div class="row">
             <div class="col-md-6 side-image">
-                <img src="/assets/perro.jpg" alt="">
+                <img src="/assets/logoperro.jpg" alt="">
                 <div class="text">
-                    <p>Join the community of developers <i>- ludiflex</i></p>
+                    <p>La exclusuvidad nos representa <i>- Mr Wolf</i></p>
+                    <p>------------------</p>
                 </div>
+                <hr>
             </div>
+            
             <div class="col-md-6 right">
                 @if(status===0){
                     <p>Usuario y/o contraseña incorrecta</p>
@@ -19,7 +22,7 @@
                     <p>Error, desde el servidor. Contacte al administrador</p>
                 }
                 <div class="input-box">
-                    <header>Inicia Sesion</header>
+                    <header>Inicio de Sesion</header>
                     <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
                         <div class="input-field">
                             <input class="input" name="email" type="email" #email="ngModel" [(ngModel)]="user.email" required>
@@ -34,7 +37,7 @@
                         </div>
                     </form>
                     <div class="signin">
-                        <span>¿Ya tienes una cuenta? <a href="#">Inicia sesión aquí</a></span>
+                        <span>¿Ya tienes una cuenta? <a href="#">Registra una cuenta aquí</a></span>
                     </div>
                 </div>  
             </div>

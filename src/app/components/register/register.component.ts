@@ -19,7 +19,7 @@ export class RegisterComponent {
     private _userService:UserService
   ){
     this.status=-1;
-    this.user=new User(0,"","",1,"",1,"","","","")
+    this.user=new User(0,"","",0,"",0,"","","","")
     this.fileName="";
   }
 

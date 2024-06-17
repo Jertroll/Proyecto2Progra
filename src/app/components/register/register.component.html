@@ -1,0 +1,82 @@
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<br><br>
+<div class="card-formulario">
+    <h3>Registro de usuario</h3>
+    <h5>Del Perro CR</h5>
+    <img class="logo" src="/assets/perroSF.png" alt="">
+    <span>
+    @switch (status) {
+        @case (0) {
+            <div class="alert alert-success"><p>Registro exitoso!</p></div>
+        }
+        @case (1) {
+            <div class="alert alert-warning"><p>No se pudo agregar el usuario!</p></div>
+        }
+        @case (2) {
+            <div class="alert alert-danger"><p>Error de servidor!</p></div>
+        }
+    }
+    </span>
+
+    
+    <form class="col-md-8 mx-auto" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+        <div class="form-group">     
+
+            <label for="nombre">Nombre</label>
+            <input id="nombre" type="text" #nombre="ngModel" class="form-control" name="nombre" 
+                pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$" [(ngModel)]="user.nombre"/>
+            @if(!nombre.valid && nombre.touched){
+                <small class="invalid-feedback d-block">Formato invalido</small>
+            } 
+            <br>
+            <label for="apellido">Apellido</label>
+            <input id="apellido" type="text" #apellido="ngModel" class="form-control" name="apellido" 
+                pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$" [(ngModel)]="user.apellido"/>
+            @if(!apellido.valid && apellido.touched){
+                <small class="invalid-feedback d-block">Formato invalido</small>
+            }  
+                 <br>   
+            <label for="telefono">Telefono</label>
+            <input id="telefono" type="number" #telefono="ngModel" class="form-control" name="telefono" 
+                pattern="^[5-9]\d{3}-?\d{4}$" [(ngModel)]="user.telefono"/>
+            @if(!telefono.valid && telefono.touched){
+                <small class="invalid-feedback d-block">Formato invalido</small>
+            }
+<br>
+            <label for="direccion">Direccion</label>
+            <input id="direccion" type="text" #direccion="ngModel" class="form-control" name="direccion" 
+                pattern="^(?=.*[a-z])(?=.*[A-Z]).{4,}$" [(ngModel)]="user.direccion"/>
+            @if(!direccion.valid && direccion.touched){
+                <small class="invalid-feedback d-block">Formato invalido</small>
+            }
+<br>
+            <label for="cedula">Cedula</label>
+            <input id="cedula" type="number" #cedula="ngModel" class="form-control" name="cedula" 
+                [(ngModel)]="user.cedula"/>
+            @if(!cedula.valid && cedula.touched){
+                <small class="invalid-feedback d-block">Formato invalido</small>
+            }
+<br>
+            <label for="email">Correo</label>
+            <input id="email" type="email" #email="ngModel" class="form-control" name="email" 
+                pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" [(ngModel)]="user.email"/>
+                @if(!email.valid && email.touched){
+                    <small class="invalid-feedback d-block">Formato invalido</small>
+                }
+                <br>
+            <label for="password">Contraseña</label>
+            <input id="password" type="password" #password="ngModel" class="form-control" name="password"
+                [(ngModel)]="user.password">
+<br>
+                <label>Selecione una imagen</label><br>
+                <input type="file" class="file-input" (change)="uploadImage($event)" #fileUpload/>
+                <button class="btn btn-outline-secondary" (click)="fileUpload.click()">
+                    <i>+</i>           
+                </button> {{fileName || "Archivo no ha sido seleccionado"}}
+        </div>   
+        <br>     
+        <input type="submit" class="btn btn-primary mt-2 btn-centrado" value="Guardar" [disabled]="signupForm.invalid">
+    </form>
+
+</div>
+<br> <br>

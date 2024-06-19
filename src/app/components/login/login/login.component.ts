@@ -21,23 +21,22 @@ export class LoginComponent {
     private _router: Router,
     private _routes: ActivatedRoute
   ) {
-    this.user = new User(1, "", "", 1, "", 1, "", "", "", "");
+    this.user = new User(0, "", "", 0, "", 0, "", "", "", "");
   }
 
   onSubmit(form: any) {
     this._userService.login(this.user).subscribe({
       next: (response: any) => {
+      console.log(response);
         if (response.status != 401) {
           sessionStorage.setItem("token", response);
           this._userService.getIdentityFromAPI().subscribe({
             next: (resp: any) => {
               console.log(resp);
-              sessionStorage.setItem('identity', resp);
+              sessionStorage.setItem('identity', JSON.stringify(resp));
               this._router.navigate(['']);
             },
             error: (error: Error) => {
-              console.error(error);
-              this.status = 1;
             }
           })
         } else {

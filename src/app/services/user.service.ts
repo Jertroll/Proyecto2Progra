@@ -24,7 +24,7 @@ login(user:User):Observable<any>{
     let options={
         headers
     }
-    return this._http.post(this.urlAPI+'user/login',params,options)
+    return this._http.post(this.urlAPI+'login',params,options)
 
 }
 
@@ -40,7 +40,7 @@ getIdentityFromAPI():Observable<any>{
     let options={
         headers
     }
-    return this._http.get(this.urlAPI+'user/getidentity',options);
+    return this._http.get(this.urlAPI+'client/user/getidentity',options);
     
 }           
 
@@ -67,5 +67,19 @@ buscarUserPorId(id: number): Observable<User> {
   uploadImage(formData: FormData): Observable<any> {
     return this._http.post<any>(this.urlAPI+'user/upload', formData);
   }
+  getIdentityFromStorage(){
+    let identity=sessionStorage.getItem('identity')
+    if(identity){
+        
+        return JSON.parse(identity)
+    }
+    return null
+}
+getToken(){
+    return sessionStorage.getItem('token')        
+}
+obtenerusers(): Observable<{ status: number, message: string, data: User[] }> {
+    return this._http.get<{ status: number, message: string, data: User[] }>(`${this.urlAPI}user`);
+}
 
 }

@@ -6,6 +6,7 @@ import { Carrito } from "../models/carrito";
 import { Observable,throwError } from "rxjs";
 import { map,catchError } from 'rxjs/operators';
 
+
 @Injectable({
     providedIn:'root'
 })
@@ -14,20 +15,24 @@ export class CarritoService {
     constructor(
         private _http:HttpClient
     ){
-        this.urlAPI=server.url
+        this.urlAPI=server.Url
     }
-    Crear(token: string): Observable<any> {
-        return this._http.post<any>(`${this.urlAPI}carrito/store`, {}, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-      }
-    addProductToCart(id: number, productoId: number): Observable<any> {
-        const body = {
-          producto_id: productoId,
-        };
-        const headers = new HttpHeaders().set('Content-Type', 'application/json');
-        return this._http.post(`${this.urlAPI}carrito/${id}/addProductToCart`, body, { headers });
-      }
- 
+    Crear(token: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'bearertoken': token
+      });
+      const options = { headers };
+      return this._http.post(this.urlAPI+'carrito/store', {}, options);
+    }
+    addProductToCart(productoId: number, token: any): Observable<any> {
+      const body = { producto_id: productoId };
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'bearertoken': token
+      });
+    
+      return this._http.post(`${this.urlAPI}agregarCarrito`, body, { headers });
+    }
     
 }

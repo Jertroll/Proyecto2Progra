@@ -11,6 +11,8 @@ import { CarritoService } from '../../services/carrito';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Carrito } from '../../models/carrito';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service'; 
 
 @Component({
   selector: 'app-catalogo',
@@ -29,16 +31,21 @@ export class CatalogoComponent implements OnInit{
   status: number;
   private token;
 
-  constructor(private productoService: ProductoService,private carritoService: CarritoService) {
+  constructor(
+    private productoService: ProductoService,
+    private carritoService: CarritoService,
+    private userService:UserService
+  ) {
     this.productos = []; 
     this.status = -1;
     //this.producto = new Producto(0, "", 0, "", "", "disponible", "");
-    this.url=server.url
+    this.url=server.Url
     this.carritoId=0;
     this.token=this.userService.getToken();
   }
   ngOnInit(): void {
     this.obtenerProductos();
+    this.CrearCarrito();
   }
 
   obtenerProductos(): void {
@@ -51,17 +58,23 @@ export class CatalogoComponent implements OnInit{
       console.error('Error fetching productos', error);
     });
   }
-  verificarOCrearCarrito(): void {
-    const token = this.userService.getToken();
-    this.carritoService.verificarOCrearCarrito(token).subscribe(
-      response => {
-        this.carritoId = response.carrito_id;
-        console.log('Carrito verificado o creado:', response);
-      },
-      error => {
-        console.error('Error al verificar o crear carrito:', error);
-      }
-    );
+  CrearCarrito(): void {
+    this.token = this.userService.getToken();
+    console.log('Datos de reserva a enviar:', this.token);
+    this.carritoService.Crear(this.token).subscribe({
+        next:(response: any)=>{
+          console.log(response);
+          if (response.status === 201) {
+            this.carritoId = response.id;
+            console.log('Carrito verificado o creado:', response);
+          } else {
+            console.error('Error al verificar o crear carrito:', response.message);
+          }
+        },
+        error:(error:Error) => {
+          console.error('Error al verificar o crear carrito:', error);
+        }
+  });
   }
   buscar(): void {
     if (!this.buscaNom.trim()) {
@@ -88,8 +101,8 @@ export class CatalogoComponent implements OnInit{
     );
   }
   agregarAlCarrito(producto: Producto): void {
-    if (this.carritoId) {
-      this.carritoService.addProductToCart(this.carritoId, producto.id)
+    this.token = this.userService.getToken();
+      this.carritoService.addProductToCart( producto.id,this.token)
         .subscribe(
           response => {
             console.log('Producto agregado al carrito:', response);
@@ -99,9 +112,7 @@ export class CatalogoComponent implements OnInit{
             console.error('Error al agregar producto al carrito:', error);
           }
         );
-    } else {
-      console.error('Carrito ID no encontrado.');
-    }
+   
   }
 
 }

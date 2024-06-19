@@ -90,7 +90,6 @@ export class PrudutosComponent implements OnInit {
 
   search(): void {
     if (this.searchTerm.trim() !== '') {
-      // Llamar al servicio para buscar el producto por su ID
       this.productoService.buscarProductoPorId(parseInt(this.searchTerm, 10)).subscribe(
         producto => {
           console.log('Producto encontrado:', producto); // Agregar esta línea para depurar

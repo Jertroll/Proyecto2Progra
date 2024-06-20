@@ -50,3 +50,16 @@
 .subnav:hover .subnav-content{
     display: block;
 }
+
+/* Puedes agregar estos estilos a tu archivo de estilos global o específico del componente */
+footer {
+    width: 100%;
+    background-color: #23242a;
+    color: white;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+

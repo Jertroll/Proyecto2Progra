@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProduagregarComponent } from './components/produagregar/produagregar.component';
 import { PrudutosComponent } from './components/prudutos/prudutos.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
-
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 export const routes: Routes = [
 {path: '', component:HomeComponent},
 {path: 'home', component:HomeComponent},
@@ -14,6 +14,8 @@ export const routes: Routes = [
 
 {path: 'produagregar', component:ProduagregarComponent},
 {path: 'prudutos', component:PrudutosComponent},
-{path: 'catalogo', component:CatalogoComponent}
+{path: 'catalogo', component:CatalogoComponent},
+
+{path: 'Admin', component:AdminPanelComponent}
 
 ];

@@ -11,7 +11,8 @@ import { Compra } from '../../models/compra';
 import { CompraService } from '../../services/compra.service';
 import { DetalleCompra } from '../../models/detalleCompra';
 import { DetalleCompraService } from '../../services/detalle-compra.service';
-
+import { Bill } from '../../models/bill';
+import { BillService } from '../../services/bill.service';
 interface ProductoSeleccionable extends Producto {
   seleccionado?: boolean;
   cantidad?: number;
@@ -31,13 +32,17 @@ export class CarritoComponent implements OnInit {
   public detalleCompra: DetalleCompra[] = [];
   public url: string;
   private token;
-  public compra:Compra = new Compra(0,0,0,"","",)
+  public compra:Compra = new Compra(0,0,0,"","",);
+  public bill:Bill=new Bill(0,0,"","",0,0,0);
+  public mostrarInfoFactura: boolean = false;
+  public facturaId: number=0 ;
   constructor(
     private carritoService: CarritoService,
     private productoService: ProductoService,
     private userService: UserService,
     private compraService: CompraService,
-    private detalleCompraService: DetalleCompraService
+    private detalleCompraService: DetalleCompraService,
+    private billService:BillService
   ) {
     this.url = server.Url;
     this.token=this.userService.getToken();
@@ -107,6 +112,7 @@ export class CarritoComponent implements OnInit {
         console.log('ID de compra:', compraId);
         this.saveDetallesCompra(compraId, detallesCompra);
         this.carrito = this.carrito.filter(producto => !producto.seleccionado);
+        this.createFactura(compraId);
         compraForm.reset();
         this.carrito = [];
         this.status = 0;
@@ -169,6 +175,34 @@ export class CarritoComponent implements OnInit {
       },
       error => {
         console.error('Error al eliminar producto del carrito:', error);
+      }
+    );
+  }
+  createFactura(compraId: number) {
+    this.token = this.userService.getToken();
+    const nomTienda = "El Perro CR";
+    const fechaEmision = new Date().toISOString().split('T')[0]
+    this.billService.crear(compraId,fechaEmision,nomTienda,this.token).subscribe(
+      (response) => {
+        console.log('Factura creada:', response);
+        const facturaId = response.bill.id; // Asume que la respuesta contiene el ID de la factura
+        this.mostrarFactura(facturaId);
+      },
+      (error) => {
+        console.error('Error creando factura:', error);
+      }
+    );
+  }
+  mostrarFactura(facturaId: number){
+    this.billService.mostrarFactura(facturaId).subscribe(
+      (response) => {
+        this.bill = response;
+        console.log('Factura obtenida:', this.bill);
+        this.mostrarInfoFactura = true; 
+        // Aquí puedes agregar la lógica para mostrar la factura en la interfaz de usuario
+      },
+      (error) => {
+        console.error('Error obteniendo factura:', error);
       }
     );
   }

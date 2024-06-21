@@ -26,5 +26,15 @@
 
       <button type="submit" class="btn btn-primary mt-2" [disabled]="compraForm.invalid">Comprar</button>
   </form>
+  <div *ngIf="mostrarInfoFactura" class="alert alert-info mt-3">
+    <h4>Información de la Factura</h4>
+    <p><strong>ID de Factura:</strong> {{ bill.id}}</p>
+    <p><strong>Usuario:</strong> {{ bill.idUsuario }}</p>
+    <p><strong>Tienda:</strong> {{ bill.nomTienda }}</p>
+    <p><strong>Fecha Emison:</strong> {{ bill.fechaEmision}}</p>
+    <p><strong>SubTotal:</strong> {{ bill.subTotal }}</p>
+    <p><strong>Total:</strong> {{ bill.total }}</p>
+    <!-- Agrega más detalles según la estructura de tu objeto 'factura' -->
+  </div>
 </div>
 

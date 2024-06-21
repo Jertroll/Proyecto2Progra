@@ -6,16 +6,18 @@ import { ProduagregarComponent } from './components/produagregar/produagregar.co
 import { PrudutosComponent } from './components/prudutos/prudutos.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+
 export const routes: Routes = [
 {path: '', component:HomeComponent},
 {path: 'home', component:HomeComponent},
 {path: 'login', component:LoginComponent},
 {path: 'register', component:RegisterComponent},
-
 {path: 'produagregar', component:ProduagregarComponent},
 {path: 'prudutos', component:PrudutosComponent},
 {path: 'catalogo', component:CatalogoComponent},
 
 {path: 'Admin', component:AdminPanelComponent}
 
+{path: 'carrito', component:CarritoComponent}
 ];

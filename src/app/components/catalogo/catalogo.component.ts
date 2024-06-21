@@ -7,17 +7,16 @@ import { server } from '../../services/global';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { CarritoService } from '../../services/carrito';
+import { CarritoService } from '../../services/carrito.service';
 import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
 import { Carrito } from '../../models/carrito';
-import { User } from '../../models/user';
 import { UserService } from '../../services/user.service'; 
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [FormsModule, CommonModule,MatCardModule,MatButtonModule,MatInputModule,MatIconModule,MatMenuModule],
+  imports: [FormsModule, CommonModule,MatCardModule,MatButtonModule,MatInputModule,MatIconModule,RouterLink],
   templateUrl: './catalogo.component.html',
   styleUrl: './catalogo.component.css'
 })
@@ -30,6 +29,7 @@ export class CatalogoComponent implements OnInit{
   buscaNom: string = '';
   status: number;
   private token;
+  carri: Carrito[] = [];
 
   constructor(
     private productoService: ProductoService,
@@ -46,6 +46,7 @@ export class CatalogoComponent implements OnInit{
   ngOnInit(): void {
     this.obtenerProductos();
     this.CrearCarrito();
+
   }
 
   obtenerProductos(): void {
@@ -64,11 +65,12 @@ export class CatalogoComponent implements OnInit{
     this.carritoService.Crear(this.token).subscribe({
         next:(response: any)=>{
           console.log(response);
-          if (response.status === 201) {
-            this.carritoId = response.id;
-            console.log('Carrito verificado o creado:', response);
+          if (response && response.status === 201) {
+            console.log('Carrito creado exitosamente:', response.category);
+          } else if (response && response.status === 200) {
+            console.log('Carrito ya existe:', response.category);
           } else {
-            console.error('Error al verificar o crear carrito:', response.message);
+            console.error('Respuesta inesperada del servidor:', response);
           }
         },
         error:(error:Error) => {
@@ -102,17 +104,16 @@ export class CatalogoComponent implements OnInit{
   }
   agregarAlCarrito(producto: Producto): void {
     this.token = this.userService.getToken();
-      this.carritoService.addProductToCart( producto.id,this.token)
-        .subscribe(
-          response => {
-            console.log('Producto agregado al carrito:', response);
-            this.carrito.push(producto); // Agrega el producto al array del carrito localmente
-          },
-          error => {
-            console.error('Error al agregar producto al carrito:', error);
-          }
-        );
-   
+    this.carritoService.addProductToCart(producto.id, this.token).subscribe({
+      next: (response: any) => {
+        console.log('Producto agregado al carrito:', response);
+        this.carrito.push(producto); // Agrega el producto al array del carrito 
+      },
+      error: (error: Error) => {
+        console.error('Error al verificar o crear carrito:', error);
+      }
+    });
+
   }
 
 }

@@ -66,5 +66,5 @@ export class ProductoService {
       buscarNombre(nombre: string): Observable<any> {
         return this._http.get(`${this.urlAPI}producto/buscar/${nombre}`);
       }
-    
+  
 }

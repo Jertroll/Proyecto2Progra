@@ -24,7 +24,7 @@ login(user:User):Observable<any>{
     let options={
         headers
     }
-    return this._http.post(this.urlAPI+'login',params,options)
+    return this._http.post(this.urlAPI+'user/login',params,options)
 
 }
 
@@ -40,7 +40,7 @@ getIdentityFromAPI():Observable<any>{
     let options={
         headers
     }
-    return this._http.get(this.urlAPI+'client/user/getidentity',options);
+    return this._http.get(this.urlAPI+'user/getidentity',options);
     
 }           
 

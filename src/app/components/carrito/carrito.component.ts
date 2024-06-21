@@ -160,20 +160,15 @@ export class CarritoComponent implements OnInit {
       }
     );
   }
-  removeProductFromCart(productoId: number): void {
+  eliminarProducto(producto_id: number): void {
     this.token = this.userService.getToken();
-    this.carritoService.removeProductFromCart(productoId, this.token).subscribe(
+    this.carritoService.removeProductFromCart(producto_id, this.token).subscribe(
       response => {
-        if (response.status === 200) {
-          // Actualiza la lista del carrito en el componente
-          this.carrito = this.carrito.filter(p => p.id !== productoId);
-          console.log('Producto eliminado del carrito:', response.message);
-        } else {
-          console.error('Error al eliminar el producto del carrito', response.message);
-        }
+        console.log('Producto eliminado del carrito:', response.message);
+        this.obtenerProductosCarrito(); // Recargar el carrito
       },
       error => {
-        console.error('Error al eliminar el producto del carrito', error);
+        console.error('Error al eliminar producto del carrito:', error);
       }
     );
   }

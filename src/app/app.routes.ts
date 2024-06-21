@@ -17,7 +17,7 @@ export const routes: Routes = [
 {path: 'prudutos', component:PrudutosComponent},
 {path: 'catalogo', component:CatalogoComponent},
 
-{path: 'Admin', component:AdminPanelComponent}
+{path: 'Admin', component:AdminPanelComponent},
 
 {path: 'carrito', component:CarritoComponent}
 ];

@@ -1,7 +1,13 @@
 <div>
   <input type="text" placeholder="Buscar producto..." [(ngModel)]="searchTerm">
   <button mat-button class="buscar" (click)="search()"><mat-icon>search</mat-icon>Buscar</button>
-    <h2>Productos</h2>
+  <div class="button-Panel">
+    <button mat-raised-button color="primary" [routerLink]="['/Admin']">
+      Regresar
+    </button>
+  </div>
+  
+    <h2>Productos en el Sistema</h2>
     <table>
       <thead>
         <tr>
@@ -38,4 +44,10 @@
         </ng-container>
       </tbody>
     </table>
+<div class="button-container">
+  <a [routerLink]="['/produagregar']" class="p-button font-bold">
+    Agregar un Producto al Sistema
+  </a>
+</div>
+
   </div>

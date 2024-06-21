@@ -7,11 +7,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component';
 import { server } from '../../services/global';
-
+import { ButtonModule } from 'primeng/button';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [FormsModule, CommonModule,MatIconModule],
+  imports: [FormsModule, CommonModule,MatIconModule, ButtonModule, RouterLink, RouterModule, RouterOutlet],
   templateUrl: './prudutos.component.html',
   styleUrls: ['./prudutos.component.css']
 })
@@ -27,7 +28,7 @@ export class PrudutosComponent implements OnInit {
     this.status = -1;
     this.productos = [];
     this.producto = new Producto(0, "", 0, "", "", "disponible", "");
-    this.url=server.url
+    this.url=server.Url
   }
 
   ngOnInit(): void {
@@ -90,7 +91,6 @@ export class PrudutosComponent implements OnInit {
 
   search(): void {
     if (this.searchTerm.trim() !== '') {
-      // Llamar al servicio para buscar el producto por su ID
       this.productoService.buscarProductoPorId(parseInt(this.searchTerm, 10)).subscribe(
         producto => {
           console.log('Producto encontrado:', producto); // Agregar esta línea para depurar

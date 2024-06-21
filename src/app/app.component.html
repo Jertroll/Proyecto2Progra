@@ -34,13 +34,25 @@
           </ul>
         }    
         @else {
-          <ul class="navbar-nav navbar-right">
-            @if(identity.image){
+          <ul class="navbar-nav">
+            @if(identity.id){
               <li class="m-1">
                 <img src="" alt="Usuario autenticado">
               </li>
             }
             <!--Presentamos un dropdown con opciones del menu para otras funcionalidades-->
+            <li class="nav-item dropdown">
+                <a class="navbar-link dropdown-toggle none-decorate" id="navDrop" data-bs-toggle="dropdown" aria-expanded="false">             
+                  {{identity.name}}
+                </a>
+                <div aria-labelledby="navDrop" class="dropdown-menu">
+                  <a class="dropdown-item" [routerLink]="['nueva-publicacion']">Wenas</a>
+                  @if (identity&&identity.role==='admin') {
+                    <a class="dropdown-item" [routerLink]="['Admin']">Admin Panel</a>
+                  }
+
+                </div>
+            </li>
           </ul>
         }    
         

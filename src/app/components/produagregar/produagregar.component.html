@@ -62,8 +62,12 @@
       <button class="btn btn-outline-secondary" (click)="fileUpload.click()">
           <i>+</i>           
       </button> {{fileName || "Archivo no ha sido seleccionado"}}
-
+      
     </div>        
-    <input type="submit" class="btn btn-primary mt-2" value="Guardar" [disabled]="productForm.invalid">
+    <div class="button-container">
+      <input type="submit" class="btn btn-primary mt-2" value="Guardar" [disabled]="productForm.invalid">
+      <a routerLink="/prudutos" class="btn btn-danger mt-2 ml-2">Regresar</a>
+  </div>
+
   </form>
 </div>

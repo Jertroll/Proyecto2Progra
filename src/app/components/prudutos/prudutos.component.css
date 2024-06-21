@@ -114,3 +114,21 @@ table {
     background-color: #446149;
     color: white;
   }
+
+  .button-container {
+    text-align: center; /* Centra el contenido del contenedor */
+    margin-top: 10px; /* Espacio superior */
+  }
+  
+  .button-container a {
+    background-color: #4CAF50; /* Color verde para el botón */
+    color: white; /* Texto blanco para contraste */
+    padding: 10px 20px; /* Espacio interno del botón */
+    text-decoration: none; /* Remueve el subrayado del texto */
+    font-size: medium; /* Tamaño de fuente mediano */
+    border-radius: 3px; /* Bordes redondeados */
+  }
+  .button-Panel button{
+    background-color: #d32a14;
+    color: white;
+  }

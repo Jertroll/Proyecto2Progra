@@ -4,11 +4,11 @@ import { Producto } from '../../models/producto';
 import { timer } from 'rxjs';
 import { ProductoService } from '../../services/producto.service';
 import { ActivatedRoute,Route } from '@angular/router';
-
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-produagregar',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink, RouterModule, RouterOutlet],
   templateUrl: './produagregar.component.html',
   styleUrl: './produagregar.component.css'
 })

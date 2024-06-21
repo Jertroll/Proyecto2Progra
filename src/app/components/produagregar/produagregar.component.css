@@ -57,3 +57,10 @@ form {
 .invalid-feedback {
     color: #dc3545; /* Color del texto de ayuda para campos inválidos */
 }
+
+.button-container {
+    display: flex; /* Utiliza flexbox para los botones */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
+  }
+  

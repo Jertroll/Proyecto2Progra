@@ -34,5 +34,19 @@ export class CarritoService {
     
       return this._http.post(`${this.urlAPI}agregarCarrito`, body, { headers });
     }
-    
+    obtenerProductosCarrito(token: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'bearertoken': token
+      });
+  
+      return this._http.get<any>(`${this.urlAPI}obtenerProductosCarrito`, { headers });
+    }
+    eliminarProductosComprados(carritoId: number): Observable<any> {
+      return this._http.delete(`${this.urlAPI}carrito/${carritoId}/eliminarProductosComprados`);
+    }
+    removeProductFromCart(producto_id: number, token: string): Observable<any> {
+      let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+      return this._http.delete(`${this.urlAPI}carrito/removeProduct/${producto_id}`, { headers });
+    }
 }

@@ -1,0 +1,31 @@
+<div class="facturas-container">
+    <h2>Listado de Facturas</h2>
+    <div *ngIf="facturas.length > 0; else noFacturas">
+      <table>
+        <thead>
+          <tr>
+            <th>N.Factura</th>
+            <th>ID</th>
+            <th>Fecha de Emisión</th>
+            <th>Nombre de la Tienda</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let factura of facturas">
+            <td>{{ factura.id }}</td>
+            <td>{{ factura.fechaEmision }}</td>
+            <td>{{ factura.nomTienda }}</td>
+            <td>
+              <!-- Aquí puedes agregar acciones como ver detalles, editar, eliminar, etc. -->
+              <button (click)="verDetalle(factura.id)">Ver Detalle</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noFacturas>
+      <p>No hay facturas disponibles.</p>
+    </ng-template>
+  </div>
+  

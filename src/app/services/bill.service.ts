@@ -14,9 +14,10 @@ export class BillService {
   ){
       this.urlAPI=server.Url
   }
-  obteneracturas(): Observable<{ status: number, message: string, data: Bill[] }> {
+  
+  obtenerFacturas(): Observable<{ status: number, message: string, data: Bill[] }> {
     return this._http.get<{ status: number, message: string, data: Bill[] }>(`${this.urlAPI}bill`);
-}
+  }
 mostrarFactura(id: number): Observable<Bill> {
   return this._http.get<{ status: number, message: string, bill: Bill }>(`${this.urlAPI}bill/${id}`)
     .pipe(

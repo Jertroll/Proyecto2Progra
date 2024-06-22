@@ -9,6 +9,8 @@ import { UserAgregarComponent } from './components/UserCreate/user-agregar/user-
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { UserupComponent } from './components/UserCreate/userup/userup.component';
+
 
 export const routes: Routes = [
 {path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,16 +20,15 @@ export const routes: Routes = [
 {path: 'register', component:RegisterComponent},
 {path: 'produagregar', component:ProduagregarComponent},
 {path: 'prudutos', component:PrudutosComponent},
-
+{path: 'Admin', component:AdminPanelComponent},
 {path: 'catalogo', component:CatalogoComponent},
 {path: 'carrito', component:CarritoComponent},
 
-{path: "userRUD", component:UserAgregarComponent},
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
 {path: '**', redirectTo: '/home' },
+{path: 'users12', component:UserupComponent}
 
-{path: 'Admin', component:AdminPanelComponent}
 
 ];
 

@@ -36,7 +36,7 @@
           <td>{{ user.direccion }}</td>
           <td>{{ user.rol }}</td>
           <td>{{ user.email }}</td>
-          <td><img src="{{url+'user/getimage/'+user.imagen}}" class="imagen" width="100"></td>
+          <td><img src="{{Url+'user/getimage/'+user.imagen}}" class="imagen" width="100"></td>
           <td>
             <button mat-button class="edit" (click)="actualizarUser(user)">
               <mat-icon>edit</mat-icon>Editar

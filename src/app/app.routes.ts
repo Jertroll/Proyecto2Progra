@@ -23,10 +23,10 @@ export const routes: Routes = [
 {path: 'Admin2', component:AdminPanelComponent},
 {path: 'catalogo', component:CatalogoComponent},
 {path: 'carrito', component:CarritoComponent},
-{path: 'users', component:UserupComponent},
+{path: 'users12', component:UserupComponent},
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
-{path: '**', redirectTo: '/home' }
+{path: '**', redirectTo: '/home' },
 
 
 

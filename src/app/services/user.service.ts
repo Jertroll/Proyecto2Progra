@@ -81,7 +81,7 @@ buscarUserPorId(id: number): Observable<User> {
         })
       );
   }
-  uploadImage(formData: FormData): Observable<any> {
+uploadImage(formData: FormData): Observable<any> {
     return this._http.post<any>(this.urlAPI+'user/upload', formData);
   }
 

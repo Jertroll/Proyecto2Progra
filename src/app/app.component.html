@@ -21,9 +21,15 @@
             </div>
           </li> 
         </ul>   
+
+ 
         @if(!identity){
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a [routerLink]="['login']" style="color: white; text-decoration: none;">Login</a></li>
+
+
+         <!--Presentamos un dropdown con opciones del menu para otras funcionalidades   
+            
             <li class="nav-item"><a [routerLink]="['register']" style="color: white; text-decoration: none;">Registro</a></li>
             <li class="nav-item"><a [routerLink]="['produagregar']" style="color: white; text-decoration: none;">Producto</a></li>
             <li class="nav-item"><a [routerLink]="['prudutos']" style="color: white; text-decoration: none;">Productos</a></li>
@@ -40,19 +46,14 @@
                 <img src="" alt="Usuario autenticado">
               </li>
             }
-            <!--Presentamos un dropdown con opciones del menu para otras funcionalidades-->
-            <li class="nav-item dropdown">
-                <a class="navbar-link dropdown-toggle none-decorate" id="navDrop" data-bs-toggle="dropdown" aria-expanded="false">             
-                  {{identity.name}}
-                </a>
-                <div aria-labelledby="navDrop" class="dropdown-menu">
-                  <a class="dropdown-item" [routerLink]="['nueva-publicacion']">Wenas</a>
-                  @if (identity&&identity.role==='admin') {
-                    <a class="dropdown-item" [routerLink]="['Admin']">Admin Panel</a>
-                  }
+-->
 
-                </div>
-            </li>
+
+
+
+
+
+       
           </ul>
         }    
       </div>

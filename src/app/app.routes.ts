@@ -20,7 +20,7 @@ export const routes: Routes = [
 {path: 'prudutos', component:PrudutosComponent},
 
 {path: 'catalogo', component:CatalogoComponent},
-{path: 'carrito', component:CarritoComponent}
+{path: 'carrito', component:CarritoComponent},
 
 {path: "userRUD", component:UserAgregarComponent},
 {path: 'user-agregar', component:UserAgregarComponent},

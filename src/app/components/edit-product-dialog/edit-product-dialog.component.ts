@@ -37,6 +37,11 @@ export class EditProductDialogComponent {
             form.reset();
             this.changeStatus(0);
             this.dialogRef.close(response);
+
+            setTimeout(() => {
+              window.location.reload(); 
+            }, 100); 
+
           } else {
             this.changeStatus(1);
           }

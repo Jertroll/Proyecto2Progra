@@ -26,18 +26,14 @@ export const routes: Routes = [
 {path: 'Admin2', component:AdminPanelComponent},
 {path: 'catalogo', component:CatalogoComponent},
 {path: 'carrito', component:CarritoComponent},
-
-
 {path: 'compras',component:CompraComponent},
-
 { path: 'facturas', component: ListadoFacturasComponent },
 {path: "userRUD", component:UserAgregarComponent},
-
 {path: 'users12', component:UserupComponent},
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
 {path: '**', redirectTo: '/home' },
-{path: 'compras',component:CompraComponent}
+
 ];
 
 

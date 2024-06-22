@@ -34,5 +34,20 @@ export class CarritoService {
     
       return this._http.post(`${this.urlAPI}agregarCarrito`, body, { headers });
     }
-    
+    obtenerProductosCarrito(token: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'bearertoken': token
+      });
+  
+      return this._http.get<any>(`${this.urlAPI}obtenerProductosCarrito`, { headers });
+    }
+    removeProductFromCart(productoId: number, token: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'bearertoken': token
+      });
+  
+      return this._http.delete<any>(`${this.urlAPI}carrito/${productoId}/eliminar`, { headers });
+    }
 }

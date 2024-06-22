@@ -1,0 +1,40 @@
+<div class="container">
+  <h3>Carrito</h3>
+  <form class="col-md-8 mx-auto" #compraForm="ngForm" (ngSubmit)="onSubmit(compraForm)">
+      <div class="form-group">
+          <table class="table">
+              <tbody>
+                  <tr *ngFor="let producto of carrito">
+                      <td>
+                          <input type="checkbox" [value]="producto.id" (change)="onTourSelectionChange(producto, $event)">
+                      </td>
+                      <td><img src="{{url+'producto/getimage/'+producto.imagen}}" class="imagen" width="100"></td>
+                      <td>{{ producto.nombre }}</td>
+                      <td>{{ producto.precio }}</td>
+                      <td>
+                          <input type="number" [(ngModel)]="producto.cantidad" name="cantidad{{ producto.id }}"
+                              class="form-control" [disabled]="!producto.seleccionado">
+                      </td>
+                      <td>
+                          <button type="button" class="btn btn-danger btn-sm"
+                              (click)="eliminarProducto(producto.id)">Eliminar</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-2" [disabled]="compraForm.invalid">Comprar</button>
+  </form>
+  <div *ngIf="mostrarInfoFactura" class="alert alert-info mt-3">
+    <h4>Información de la Factura</h4>
+    <p><strong>ID de Factura:</strong> {{ bill.id}}</p>
+    <p><strong>Usuario:</strong> {{ bill.idUsuario }}</p>
+    <p><strong>Tienda:</strong> {{ bill.nomTienda }}</p>
+    <p><strong>Fecha Emison:</strong> {{ bill.fechaEmision}}</p>
+    <p><strong>SubTotal:</strong> {{ bill.subTotal }}</p>
+    <p><strong>Total:</strong> {{ bill.total }}</p>
+
+  </div>
+</div>
+

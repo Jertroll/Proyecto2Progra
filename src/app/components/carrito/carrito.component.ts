@@ -11,7 +11,8 @@ import { Compra } from '../../models/compra';
 import { CompraService } from '../../services/compra.service';
 import { DetalleCompra } from '../../models/detalleCompra';
 import { DetalleCompraService } from '../../services/detalle-compra.service';
-
+import { Bill } from '../../models/bill';
+import { BillService } from '../../services/bill.service';
 interface ProductoSeleccionable extends Producto {
   seleccionado?: boolean;
   cantidad?: number;
@@ -31,13 +32,17 @@ export class CarritoComponent implements OnInit {
   public detalleCompra: DetalleCompra[] = [];
   public url: string;
   private token;
-  public compra:Compra = new Compra(0,0,0,"","",)
+  public compra:Compra = new Compra(0,0,0,"","",);
+  public bill:Bill=new Bill(0,0,"","",0,0,0);
+  public mostrarInfoFactura: boolean = false;
+  public facturaId: number=0 ;
   constructor(
     private carritoService: CarritoService,
     private productoService: ProductoService,
     private userService: UserService,
     private compraService: CompraService,
-    private detalleCompraService: DetalleCompraService
+    private detalleCompraService: DetalleCompraService,
+    private billService:BillService
   ) {
     this.url = server.Url;
     this.token=this.userService.getToken();
@@ -103,14 +108,18 @@ export class CarritoComponent implements OnInit {
     this.compraService.crear(compra,this.token).subscribe(
       (response) => {
         console.log('Compra exitosa:', response);
-        const compraId = response.compra.idCompra; // Accede al id de la compra creada
-        console.log('ID de compra:', compraId);
-        this.saveDetallesCompra(compraId, detallesCompra);
-        this.carrito = this.carrito.filter(producto => !producto.seleccionado);
-        compraForm.reset();
-        this.carrito = [];
-        this.status = 0;
-        this.eliminarProductosComprados(response.compra.idCarrito);
+         const compraId = response.compra.idCompra; // Accede al id de la compra creada
+      console.log('ID de compra:', compraId);
+
+      // Guarda los detalles de compra
+      this.saveDetallesCompra(compraId, detallesCompra);
+
+      // Crea la factura
+      this.createFactura(compraId);
+
+      compraForm.reset();
+      this.carrito = [];
+      this.status = 0;
       },
       error => {
         console.error('Error al hacer la compra:', error);
@@ -134,29 +143,45 @@ export class CarritoComponent implements OnInit {
       });
     });
   }
-  eliminarProductosComprados(carritoId: number): void {
-    this.carritoService.eliminarProductosComprados(carritoId).subscribe(
+
+ 
+  eliminarProducto(producto_id: number): void {
+    this.token = this.userService.getToken();
+    this.carritoService.removeProductFromCart(producto_id, this.token).subscribe(
       response => {
-        console.log('Productos comprados eliminados del carrito:', response.message);
-        // Aquí puedes actualizar el estado del componente o mostrar un mensaje de éxito
-        this.obtenerProductosCarrito();
+        console.log('Producto eliminado del carrito:', response.message);
+        this.obtenerProductosCarrito(); // Recargar el carrito
       },
       error => {
-        console.error('Error al eliminar productos comprados del carrito:', error);
-        // Aquí puedes manejar el error según tu lógica
+        console.error('Error al eliminar producto del carrito:', error);
       }
     );
   }
-  eliminarProductoDelCarrito(carritoId: number): void {
-    this.carritoService.eliminarProductosComprados(carritoId).subscribe(
-      response => {
-        console.log('Productos comprados eliminados del carrito:', response.message);
-        // Aquí puedes actualizar el estado del componente o mostrar un mensaje de éxito
-        this.obtenerProductosCarrito();
+  createFactura(compraId: number) {
+    this.token = this.userService.getToken();
+    const nomTienda = "El Perro CR";
+    const fechaEmision = new Date().toISOString().split('T')[0]
+    this.billService.crear(compraId,fechaEmision,nomTienda,this.token).subscribe(
+      (response) => {
+        console.log('Factura creada:', response);
+        const facturaId = response.bill.id; // Asume que la respuesta contiene el ID de la factura
+        this.mostrarFactura(facturaId);
       },
-      error => {
-        console.error('Error al eliminar productos comprados del carrito:', error);
-        // Aquí puedes manejar el error según tu lógica
+      (error) => {
+        console.error('Error creando factura:', error);
+      }
+    );
+  }
+  mostrarFactura(facturaId: number){
+    this.billService.mostrarFactura(facturaId).subscribe(
+      (response) => {
+        this.bill = response;
+        console.log('Factura obtenida:', this.bill);
+        this.mostrarInfoFactura = true; 
+        // Aquí puedes agregar la lógica para mostrar la factura en la interfaz de usuario
+      },
+      (error) => {
+        console.error('Error obteniendo factura:', error);
       }
     );
   }

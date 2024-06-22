@@ -12,12 +12,12 @@ export class BillService {
   constructor(
       private _http:HttpClient
   ){
-      this.urlAPI=server.Url
+    this.urlAPI = server.Url;
   }
-  
   obtenerFacturas(): Observable<{ status: number, message: string, data: Bill[] }> {
     return this._http.get<{ status: number, message: string, data: Bill[] }>(`${this.urlAPI}bill`);
-  }
+}
+
 mostrarFactura(id: number): Observable<Bill> {
   return this._http.get<{ status: number, message: string, bill: Bill }>(`${this.urlAPI}bill/${id}`)
     .pipe(

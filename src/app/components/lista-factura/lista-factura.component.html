@@ -1,31 +1,28 @@
-<div class="facturas-container">
-    <h2>Listado de Facturas</h2>
-    <div *ngIf="facturas.length > 0; else noFacturas">
-      <table>
-        <thead>
-          <tr>
-            <th>N.Factura</th>
-            <th>ID</th>
-            <th>Fecha de Emisión</th>
-            <th>Nombre de la Tienda</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let factura of facturas">
-            <td>{{ factura.id }}</td>
-            <td>{{ factura.fechaEmision }}</td>
-            <td>{{ factura.nomTienda }}</td>
-            <td>
-              <!-- Aquí puedes agregar acciones como ver detalles, editar, eliminar, etc. -->
-              <button (click)="verDetalle(factura.id)">Ver Detalle</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <ng-template #noFacturas>
-      <p>No hay facturas disponibles.</p>
-    </ng-template>
+<div>
+    <h6>Listado de Facturas</h6>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha de Emisión</th>
+          <th>Nombre de la Tienda</th>
+          <th>ID Usuario</th>
+          <th>ID Compra</th>
+          <th>Subtotal</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills">
+          <td>{{ bill.id }}</td>
+          <td>{{ bill.fechaEmision }}</td>
+          <td>{{ bill.nomTienda }}</td>
+          <td>{{ bill.idUsuario }}</td>
+          <td>{{ bill.idCompra }}</td>
+          <td>{{ bill.subTotal }}</td>
+          <td>{{ bill.total }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   

@@ -120,6 +120,7 @@ export class CarritoComponent implements OnInit {
       compraForm.reset();
       this.carrito = [];
       this.status = 0;
+      this.obtenerProductosCarrito();
       },
       error => {
         console.error('Error al hacer la compra:', error);

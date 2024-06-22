@@ -17,8 +17,8 @@ export class BillService {
   obteneracturas(): Observable<{ status: number, message: string, data: Bill[] }> {
     return this._http.get<{ status: number, message: string, data: Bill[] }>(`${this.urlAPI}bill`);
 }
-mostrarFactura(idFactura: number): Observable<Bill> {
-  return this._http.get<{ status: number, message: string, bill: Bill }>(`${this.urlAPI}bill/${idFactura}`)
+mostrarFactura(id: number): Observable<Bill> {
+  return this._http.get<{ status: number, message: string, bill: Bill }>(`${this.urlAPI}bill/${id}`)
     .pipe(
       map(response => response.bill), // Extraer el objeto de producto del cuerpo de la respuesta
       catchError(error => {
@@ -28,20 +28,9 @@ mostrarFactura(idFactura: number): Observable<Bill> {
     );
 }
 crear(idCompra: number, fechaEmision: string, nomTienda: string, token: any): Observable<any> {
-  // Construye los parámetros para la solicitud POST
-  const body = new URLSearchParams();
-  body.set('idCompra', idCompra.toString());
-  body.set('fechaEmision', fechaEmision);
-  body.set('nomTienda', nomTienda);
-
-  // Configura los headers con el token y el tipo de contenido
-  const headers = new HttpHeaders({
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'bearertoken': token
-  });
-
-  // Realiza la solicitud POST
-  return this._http.post(`${this.urlAPI}bill`, body.toString(), { headers });
+  const headers = new HttpHeaders().set('bearertoken', token); // Aquí asumimos que token es de tipo any
+  const body = { idCompra, fechaEmision, nomTienda };
+  return this._http.post<any>(this.urlAPI + 'bill', body, { headers });
 }
 
 }

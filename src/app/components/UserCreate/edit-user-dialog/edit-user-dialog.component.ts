@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { timer } from 'rxjs';
-import { UserService } from '../../../services/user.component';
+import { UserService } from '../../../services/user.service'; 
 import { RouterOutlet, RouterLink } from '@angular/router';
 
 import { MatFormFieldModule } from '@angular/material/form-field';

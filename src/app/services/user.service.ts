@@ -48,8 +48,8 @@ export class UserService {
     let options = {
       headers
     }
-    return this._http.post(this.urlAPI + 'user/register', params, options);
-  }
+    return this._http.post(this.urlAPI+'user/register',params,options);
+}
 
   buscarUserPorId(id: number): Observable<User> {
     return this._http.get<{ status: number, message: string, user: User }>(`${this.urlAPI}user/${id}`)
@@ -80,5 +80,5 @@ export class UserService {
     }
     return null;
   }
-
+  
 }

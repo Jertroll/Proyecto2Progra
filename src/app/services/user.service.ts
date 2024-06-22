@@ -16,6 +16,8 @@ export class UserService {
     this.urlAPI = server.Url
   }
 
+  private sessionStorageKey = 'identity';
+  
   login(user: User): Observable<any> {
     let userJson = JSON.stringify(user);
     let params = 'data=' + userJson
@@ -81,4 +83,9 @@ export class UserService {
     return null;
   }
   
+  clearSessionData() {
+    sessionStorage.removeItem(this.sessionStorageKey);
+    sessionStorage.removeItem('token'); // Asegúrate de limpiar el token también si es necesario
+  }
+
 }

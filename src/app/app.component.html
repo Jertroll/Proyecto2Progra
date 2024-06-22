@@ -2,7 +2,8 @@
   <nav style="background-color: #638363;" class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Mr WolfCr</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,27 +16,66 @@
               <button class="subnav-btn">Categorias</button>
               <div class="subnav-content">
                 <span>
-                    <a></a>
+                  <a></a>
                 </span>
               </div>
             </div>
-          </li> 
-        </ul>   
+          </li>
+        </ul>
 
- 
+
         @if(!identity){
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a [routerLink]="['login']" style="color: white; text-decoration: none;">Login</a></li>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a [routerLink]="['/login']" style="color: white; text-decoration: none;">Login</a></li>
 
 
-         <!--Presentamos un dropdown con opciones del menu para otras funcionalidades   
+        </ul>
+        } @else {
+
+        @if(identity.rol === "admin"){
+
+        <li class="nav-item"><a [routerLink]="['/Admin2']" style="color: white; text-decoration: none;">Admin</a></li>
+
+        <li class="nav-item"><a [routerLink]="['/produagregar']"
+            style="color: white; text-decoration: none;">Producto</a></li>
+
+        <li class="nav-item"><a [routerLink]="['/prudutos']" style="color: white; text-decoration: none;">Productos</a>
+        </li>
+
+
+
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link ms-2" (click)="confirmSignOut()">
+            {{ identity.nombre }}
+          </a>
+        </li>
+
+
+        }@else {
+
+<li class="nav-item"><a [routerLink]="['compras']" style="color: white; text-decoration: none;">Compras</a></li>
+
+        <li class="nav-item"><a [routerLink]="['catalogo']" style="color: white; text-decoration: none;">Catalogo</a>
+        </li>
+
+        <li class="nav-item d-flex align-items-center">
+          <a class="nav-link ms-2" (click)="confirmSignOut()">
+            {{ identity.nombre }}
+          </a>
+        </li>
+
+        }
+        }
+
+
+        <!--Presentamos un dropdown con opciones del menu para otras funcionalidades   
             
             <li class="nav-item"><a [routerLink]="['register']" style="color: white; text-decoration: none;">Registro</a></li>
-            <li class="nav-item"><a [routerLink]="['produagregar']" style="color: white; text-decoration: none;">Producto</a></li>
-            <li class="nav-item"><a [routerLink]="['prudutos']" style="color: white; text-decoration: none;">Productos</a></li>
-            <li class="nav-item"><a [routerLink]="['compras']" style="color: white; text-decoration: none;">Compras</a></li>
-            <li class="nav-item"><a [routerLink]="['catalogo']" style="color: white; text-decoration: none;">Catalogo</a></li>
-            <li class="nav-item"><a [routerLink]="['Admin']" style="color: white; text-decoration: none;">Admin</a></li>
+           
+          
+            
+           
+        
           </ul>
           
         }    
@@ -53,9 +93,7 @@
 
 
 
-       
-          </ul>
-        }    
+
       </div>
     </div>
   </nav>
@@ -71,7 +109,9 @@
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4">Acerca de Nosotros</h5>
           <p>
-            Somos una empresa nacional que comenzó su venta de camisetas en línea en el año 2019, hoy en día estamos ubicados en Grecia centro en tienda física, hay gran variedad de productos como camisas de vestir, bañadores para hombre, mujer y niños, lentes, camisas corte laser y shorts de mezclilla.
+            Somos una empresa nacional que comenzó su venta de camisetas en línea en el año 2019, hoy en día estamos
+            ubicados en Grecia centro en tienda física, hay gran variedad de productos como camisas de vestir, bañadores
+            para hombre, mujer y niños, lentes, camisas corte laser y shorts de mezclilla.
           </p>
         </div>
         <!--Grid column-->

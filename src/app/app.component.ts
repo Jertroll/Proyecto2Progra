@@ -1,5 +1,5 @@
 import { Component,OnDestroy } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet,Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from './services/user.service';
 @Component({
@@ -15,6 +15,7 @@ export class AppComponent implements OnDestroy{
   private checkIdentity: any;
   constructor(
     
+    private _router:Router,
     private userService:UserService,
 
   ){
@@ -31,6 +32,19 @@ export class AppComponent implements OnDestroy{
     }
   }
 
+  confirmSignOut() {
+    console.log('Confirmación de cierre de sesión');
+  
+    if (confirm('¿Estás seguro de querer cerrar sesión?')) {
+      console.log('Cerrando sesión...');
+  
+      this.userService.clearSessionData();
+      this.identity = null; 
+      this._router.navigate(['']); 
+    } else {
+      console.log('Cancelado');
+    }
+  }
 
   
 }

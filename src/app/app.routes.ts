@@ -11,6 +11,10 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { CarritoComponent } from './components/carrito/carrito.component';
 
 export const routes: Routes = [
+
+{path: 'Admin2', component:AdminPanelComponent},
+
+
 {path: '', redirectTo: '/home', pathMatch: 'full' },
 {path: '', component:HomeComponent},
 {path: 'home', component:HomeComponent},
@@ -25,9 +29,7 @@ export const routes: Routes = [
 {path: "userRUD", component:UserAgregarComponent},
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
-{path: '**', redirectTo: '/home' },
-
-{path: 'Admin', component:AdminPanelComponent}
+{path: '**', redirectTo: '/home' }
 
 ];
 

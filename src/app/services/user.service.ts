@@ -13,9 +13,12 @@ export class UserService{
 private urlAPI:string
 constructor(
 private _http:HttpClient
+
 ){
 this.urlAPI=server.Url
 }
+
+private sessionStorageKey = 'identity';
 
 login(user:User):Observable<any>{
     let userJson=JSON.stringify(user);
@@ -104,4 +107,10 @@ getIdentityFromStorage() {
 deliteUser(id: number): Observable<any> {
     return this._http.delete(`${this.urlAPI}user/${id}`);
   }
+
+  clearSessionData() {
+    sessionStorage.removeItem(this.sessionStorageKey);
+    sessionStorage.removeItem('token'); // Asegúrate de limpiar el token también si es necesario
+  }
+
 }

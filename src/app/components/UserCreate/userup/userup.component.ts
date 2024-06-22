@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 
-import { User } from '../../../models/user';
+import { User } from '../../../models/User';
 import { UserService } from '../../../services/user.service'; 
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 

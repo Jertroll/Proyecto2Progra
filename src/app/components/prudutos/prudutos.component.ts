@@ -7,11 +7,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-dialog.component';
 import { server } from '../../services/global';
-
+import { ButtonModule } from 'primeng/button';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [FormsModule, CommonModule,MatIconModule],
+  imports: [FormsModule, CommonModule,MatIconModule, ButtonModule, RouterLink, RouterModule, RouterOutlet],
   templateUrl: './prudutos.component.html',
   styleUrls: ['./prudutos.component.css']
 })

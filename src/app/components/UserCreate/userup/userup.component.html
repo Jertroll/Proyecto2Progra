@@ -1,0 +1,55 @@
+<div class="search-container">
+  <input type="text" placeholder="Buscar usuario..." [(ngModel)]="searchTerm" class="search-input">
+  <button mat-button class="buscar" (click)="search()">
+    <mat-icon>search</mat-icon>Buscar
+  </button>
+  <button mat-button class="user-agregar" [routerLink]="['/user-agregar']">
+    <mat-icon>add</mat-icon>Agregar usuario
+  </button>
+</div>
+
+<h2>users</h2>
+
+<div class="table-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Cédula</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+        <th>Rol</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="users && users.length > 0">
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellido }}</td>
+          <td>{{ user.cedula }}</td>
+          <td>{{ user.telefono }}</td>
+          <td>{{ user.direccion }}</td>
+          <td>{{ user.rol }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button mat-button class="edit" (click)="actualizarUser(user)">
+              <mat-icon>edit</mat-icon>Editar
+            </button>
+            <button mat-button class="delete" (click)="eliminarUser(user)">
+              <mat-icon>delete</mat-icon>Eliminar
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="!users || users.length === 0">
+        <tr>
+          <td colspan="9">No hay users disponibles.</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

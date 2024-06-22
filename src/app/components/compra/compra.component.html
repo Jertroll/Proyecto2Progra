@@ -1,0 +1,58 @@
+<div class="compra-container">
+  <h1>Lista de Compras</h1>
+  
+  <div *ngIf="compras.length > 0; else noCompras">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Compra</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Usuario</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let compra of compras">
+          <tr>
+            <td>{{ compra.idCompra }}</td>
+            <td>{{ compra.fecha }}</td>
+            <td>{{ compra.estadoCompra }}</td>
+            <td>{{ compra.idUsuario }}</td>
+            <td>
+              <button (click)="toggleDetalles(compra)">
+                {{ compra.showDetails ? 'Ocultar Detalles' : 'Ver Detalles' }}
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="compra.showDetails">
+            <td colspan="5">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detalle of compra.detalles">
+                    <td>{{ detalle.idProducto }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.precioUnitario }}</td>
+                    <td>{{ detalle.subTotal }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noCompras>
+    <p>No se encontraron compras.</p>
+  </ng-template>
+</div>

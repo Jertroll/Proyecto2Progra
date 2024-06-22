@@ -168,4 +168,15 @@ deliteUser(id: number): Observable<any> {
     sessionStorage.removeItem(this.sessionStorageKey);
     sessionStorage.removeItem('token');}
 
+
+  getImage(filename: string): Observable<Blob> {
+    return this._http.get(`${this.urlAPI}user/getimage/${filename}`, { responseType: 'blob' })
+        .pipe(
+            catchError(error => {
+                console.error('Error al obtener la imagen:', error);
+                return throwError(error); // Propagar el error
+            })
+        );
+}
+
 }

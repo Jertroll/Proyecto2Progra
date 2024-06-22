@@ -54,7 +54,9 @@ export class EditUserDialogComponent {
           form.reset();
           this.changeStatus(0);
           this.dialogRef.close(response);
-          this._router.navigate(['/users12']); // Mover aquí la navegación
+          setTimeout(() => {
+            window.location.reload(); 
+          }, 100); 
         } else {
           this.changeStatus(1);
         }

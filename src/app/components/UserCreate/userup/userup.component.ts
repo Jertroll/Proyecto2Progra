@@ -73,7 +73,7 @@ export class UserupComponent implements OnInit {
             console.log(response);
             this.obtenerUsers();
             this.changeStatus(0);
-            this._router.navigate(['/users12']); // Mover aquí la navegación
+            
           },
           error: (error: Error) => {
             this.changeStatus(2);

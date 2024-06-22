@@ -21,10 +21,12 @@ this.urlAPI=server.Url
 private sessionStorageKey = 'identity';
 
 login(user:User):Observable<any>{
+
     let userJson=JSON.stringify(user);
     let params='data='+userJson
     let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
     let options={ headers };
+
     return this._http.post(this.urlAPI+'user/login',params,options);
 
 }
@@ -46,19 +48,35 @@ getIdentityFromAPI():Observable<any>{
 }           
 
 create(user:User):Observable<any>{
+
     let userJson=JSON.stringify(user);
     let params='data='+userJson;
-    let headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    let options={
-        headers
-    }
+     let headers;
+  let ElPerroCR=sessionStorage.getItem('token');
+  if(ElPerroCR){
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                              .set('ElPerroCR',ElPerroCR);            
+  }else{
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+  }
+  let options={
+      headers
+  }
     return this._http.post(this.urlAPI+'user',params,options);
 }
+
+
 updateUser(user: User): Observable<any> {
-  let userJsonJson = JSON.stringify(user);
-  let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-  let options = {
-    headers
+  let headers;
+  let ElPerroCR=sessionStorage.getItem('token');
+  if(ElPerroCR){
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                              .set('ElPerroCR',ElPerroCR);            
+  }else{
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+  }
+  let options={
+      headers
   }
   const body = new URLSearchParams();
 
@@ -72,11 +90,22 @@ updateUser(user: User): Observable<any> {
    body.set('password', user.password);
    body.set('imagen', user.imagen);
 
-return this._http.put(`${this.urlAPI}user/${user.id}`, body.toString(), { headers });
+return this._http.put(`${this.urlAPI}user/${user.id}`, body.toString(),options );
 }
 
 buscarUserPorId(id: number): Observable<User> {
-    return this._http.get<{ status: number, message: string, user: User }>(`${this.urlAPI}user/${id}`)
+  let headers;
+  let ElPerroCR=sessionStorage.getItem('token');
+  if(ElPerroCR){
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                              .set('ElPerroCR',ElPerroCR);            
+  }else{
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+  }
+  let options={
+      headers
+  }
+    return this._http.get<{ status: number, message: string, user: User }>(`${this.urlAPI}user/${id}`,options)
       .pipe(
         map(response => response.user), // Extraer el objeto de producto del cuerpo de la respuesta
         catchError(error => {
@@ -93,7 +122,19 @@ getToken(){
     return sessionStorage.getItem('token')  || '';      
 }
 obtenerusers(): Observable<{ status: number, message: string, data: User[] }> {
-    return this._http.get<{ status: number, message: string, data: User[] }>(`${this.urlAPI}user`);
+  let headers;
+  let ElPerroCR=sessionStorage.getItem('token');
+  if(ElPerroCR){
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                              .set('ElPerroCR',ElPerroCR);            
+  }else{
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+  }
+  let options={
+      headers
+  }
+
+    return this._http.get<{ status: number, message: string, data: User[] }>(`${this.urlAPI}user`,options);
 }
 
 
@@ -106,12 +147,36 @@ getIdentityFromStorage() {
   }
 
 deliteUser(id: number): Observable<any> {
-    return this._http.delete(`${this.urlAPI}user/${id}`);
+
+  
+  let headers;
+  let ElPerroCR=sessionStorage.getItem('token');
+  if(ElPerroCR){
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                              .set('ElPerroCR',ElPerroCR);            
+  }else{
+      headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+  }
+  let options={
+      headers
+  }
+
+    return this._http.delete(`${this.urlAPI}user/${id}`,options);
   }
 
   clearSessionData() {
     sessionStorage.removeItem(this.sessionStorageKey);
-    sessionStorage.removeItem('token'); // Asegúrate de limpiar el token también si es necesario
-  }
+    sessionStorage.removeItem('token');}
+
+
+  getImage(filename: string): Observable<Blob> {
+    return this._http.get(`${this.urlAPI}user/getimage/${filename}`, { responseType: 'blob' })
+        .pipe(
+            catchError(error => {
+                console.error('Error al obtener la imagen:', error);
+                return throwError(error); // Propagar el error
+            })
+        );
+}
 
 }

@@ -1,61 +1,62 @@
-<link rel="stylesheet" href="admin-panel.component.css">
 <br>
-
 <br><br><br>
 <div class="admin">
-    <h1>Panel de Administrador</h1>
-    <h4>Del Perro CR</h4>
-    <br>
-    <img class="logo" src="/assets/perroSF.png" alt="Logo El Perro">
-    <br>
-    <div class="card-container">
-        <p-card header="Gestión de Usuarios">
-            <p class="m-0">
-                Administrar las cuentas de usuarios, roles y permisos.
-            </p>
-            <div class="button-container">
-                <a [routerLink]="['/users12']" class="p-button font-bold">
-                    Ir a Modulo de Usuarios
-                </a>
-            </div>
-        </p-card>
-    </div>
-    <div class="card-container">
-        <p-card header="Gestión de Productos">
-            <p class="m-0">
-                Administra los productos del sistema
-            </p>
-            <div class="button-container">
-                <a [routerLink]="['/prudutos']" class="p-button font-bold">
-                    Ir a Gestión de Productos
-                </a>
-            </div>
-        </p-card>
-    </div>
-    <div class="card-container">
-        <p-card header="Gestión de Compras">
-            <p class="m-0">
-                Vizualiza todas las compras que se han registrado en el sistema
-            </p>
-            <div class="button-container">
-                <a [routerLink]="['/compras']" class="p-button font-bold">
-                    Ir a Gestión de Compras
-                </a>
-            </div>
-        </p-card>
-    </div>
-    <div class="card-container">
-        <p-card header="Gestión de Facturas">
-            <p class="m-0">
-                Vizualiza las facturas que se han generado en el sistema
-            </p>
-            <div class="button-container">
-                <a [routerLink]="['/facturas']" class="p-button font-bold">
-                    Ir a Gestión de Facturas
-                </a>
-            </div>    
-        </p-card>
-    </div>
+  <h1>Panel de Administrador</h1>
+  <h4>Del Perro CR</h4>
+  <br>
+  <img class="logo" src="/assets/perroSF.png" alt="Logo El Perro">
+  <br>
+  <div class="admin-info" *ngIf="user">
 
+    <img src="{{url+'user/getimage/'+user.imagen}}" class="w-100">
+    <p>{{ user.nombre }}</p>
+  </div>
+  <div class="card-container">
+    <p-card header="Gestión de Usuarios">
+      <p class="m-0">
+        Administrar las cuentas de usuarios, roles y permisos.
+      </p>
+      <div class="button-container">
+        <a [routerLink]="['/users12']" class="p-button font-bold">
+          Ir a Modulo de Usuarios
+        </a>
+      </div>
+    </p-card>
+  </div>
+  <div class="card-container">
+    <p-card header="Gestión de Productos">
+      <p class="m-0">
+        Administra los productos del sistema
+      </p>
+      <div class="button-container">
+        <a [routerLink]="['/prudutos']" class="p-button font-bold">
+          Ir a Gestión de Productos
+        </a>
+      </div>
+    </p-card>
+  </div>
+  <div class="card-container">
+    <p-card header="Gestión de Compras">
+      <p class="m-0">
+        Vizualiza todas las compras que se han registrado en el sistema
+      </p>
+      <div class="button-container">
+        <a [routerLink]="['/compras3']" class="p-button font-bold">
+          Ir a Gestión de Compras
+        </a>
+      </div>
+    </p-card>
+  </div>
+  <div class="card-container">
+    <p-card header="Gestión de Facturas">
+      <p class="m-0">
+        Vizualiza las facturas que se han generado en el sistema
+      </p>
+      <div class="button-container">
+        <a [routerLink]="['/register']" class="p-button font-bold">
+          Ir a Gestión de Facturas
+        </a>
+      </div>
+    </p-card>
+  </div>
 </div>
-

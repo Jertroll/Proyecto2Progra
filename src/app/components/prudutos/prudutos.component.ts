@@ -37,6 +37,9 @@ export class PrudutosComponent implements OnInit {
 
   obtenerProductos(): void {
     this.productoService.obtenerProductos().subscribe(response => {
+
+      
+
       if (response && response.data) {
         this.productos = response.data; // Acceso correcto al array de productos
       }
@@ -64,6 +67,7 @@ export class PrudutosComponent implements OnInit {
             console.log(response);
             this.obtenerProductos();
             this.changeStatus(0);
+            window.location.reload(); // Recarga la página automáticamente
           },
           error: (error: Error) => {
             this.changeStatus(2);

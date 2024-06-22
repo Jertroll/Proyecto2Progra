@@ -42,9 +42,6 @@ export class CarritoService {
   
       return this._http.get<any>(`${this.urlAPI}obtenerProductosCarrito`, { headers });
     }
-    eliminarProductosComprados(carritoId: number): Observable<any> {
-      return this._http.delete(`${this.urlAPI}carrito/${carritoId}/eliminarProductosComprados`);
-    }
     removeProductFromCart(productoId: number, token: any): Observable<any> {
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',

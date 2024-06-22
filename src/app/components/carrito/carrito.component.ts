@@ -108,15 +108,18 @@ export class CarritoComponent implements OnInit {
     this.compraService.crear(compra,this.token).subscribe(
       (response) => {
         console.log('Compra exitosa:', response);
-        const compraId = response.compra.idCompra; // Accede al id de la compra creada
-        console.log('ID de compra:', compraId);
-        this.saveDetallesCompra(compraId, detallesCompra);
-        this.carrito = this.carrito.filter(producto => !producto.seleccionado);
-        this.createFactura(compraId);
-        compraForm.reset();
-        this.carrito = [];
-        this.status = 0;
-        this.eliminarProductosComprados(response.compra.idCarrito);
+         const compraId = response.compra.idCompra; // Accede al id de la compra creada
+      console.log('ID de compra:', compraId);
+
+      // Guarda los detalles de compra
+      this.saveDetallesCompra(compraId, detallesCompra);
+
+      // Crea la factura
+      this.createFactura(compraId);
+
+      compraForm.reset();
+      this.carrito = [];
+      this.status = 0;
       },
       error => {
         console.error('Error al hacer la compra:', error);
@@ -140,32 +143,8 @@ export class CarritoComponent implements OnInit {
       });
     });
   }
-  eliminarProductosComprados(carritoId: number): void {
-    this.carritoService.eliminarProductosComprados(carritoId).subscribe(
-      response => {
-        console.log('Productos comprados eliminados del carrito:', response.message);
-        // Aquí puedes actualizar el estado del componente o mostrar un mensaje de éxito
-        this.obtenerProductosCarrito();
-      },
-      error => {
-        console.error('Error al eliminar productos comprados del carrito:', error);
-        // Aquí puedes manejar el error según tu lógica
-      }
-    );
-  }
-  eliminarProductoDelCarrito(carritoId: number): void {
-    this.carritoService.eliminarProductosComprados(carritoId).subscribe(
-      response => {
-        console.log('Productos comprados eliminados del carrito:', response.message);
-        // Aquí puedes actualizar el estado del componente o mostrar un mensaje de éxito
-        this.obtenerProductosCarrito();
-      },
-      error => {
-        console.error('Error al eliminar productos comprados del carrito:', error);
-        // Aquí puedes manejar el error según tu lógica
-      }
-    );
-  }
+
+ 
   eliminarProducto(producto_id: number): void {
     this.token = this.userService.getToken();
     this.carritoService.removeProductFromCart(producto_id, this.token).subscribe(

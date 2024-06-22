@@ -32,18 +32,18 @@
 }
 
 .imagen {
-  width: 200px; /* Ajusta según tus necesidades */
-  height: 200px; /* Ajusta según tus necesidades */
-  object-fit: cover; /* Asegura que la imagen se ajuste al contenedor manteniendo su proporción */
+  width: 200px;
+  height: 200px; 
+  object-fit: cover;
   border-radius: 8px;
 }
 
 .detalle {
-  flex: 1; /* El resto del espacio disponible para el detalle */
+  flex: 1; 
   display: flex;
   flex-direction: column;
 }
 
 .btn-agregar {
-  align-self: flex-end; /* Alinea el botón al final del contenedor de detalle */
+  align-self: flex-end;
 }

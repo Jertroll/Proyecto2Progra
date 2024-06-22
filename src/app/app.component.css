@@ -7,13 +7,13 @@
 .subnav a{
     float: left;
     font-size: 1em;
-    color: #000;
+    color: #4e4d4d;
     text-align: center;
     padding: 12px 14px;
     text-decoration: none;
 }
 .navbar a:hover, .subnav:hover{
-    background-color: #e0dede;
+    background-color: #8db696;
 }
 
 .subnav {
@@ -24,7 +24,7 @@
     font-size: 1.2em;
     border: none;
     outline: none;
-    color: black;
+    color: rgb(7, 7, 7);
     padding: 14px 16px;
     background-color: inherit;
     margin: 0;
@@ -39,14 +39,26 @@
 }
 .subnav-content a{
     float: left;
-    color:#000;
+    color:#eeeded;
     text-decoration: none;
 }
 .subnav-content a:hover{
     background-color: #f1efef;
-    color: #222121;
+    color: #faf8f8;
 }
 
 .subnav:hover .subnav-content{
     display: block;
 }
+
+footer {
+    width: 100%;
+    background-color: #23242a;
+    color: white;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+

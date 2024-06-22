@@ -5,6 +5,7 @@ import { User } from '../../../models/user';
 import { timer } from 'rxjs';
 import { UserService } from '../../../services/user.service'; 
 import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   standalone: true,

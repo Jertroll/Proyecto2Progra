@@ -9,8 +9,6 @@ import { EditProductDialogComponent } from '../edit-product-dialog/edit-product-
 import { server } from '../../services/global';
 import { ButtonModule } from 'primeng/button';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
-
-
 @Component({
   selector: 'app-productos',
   standalone: true,

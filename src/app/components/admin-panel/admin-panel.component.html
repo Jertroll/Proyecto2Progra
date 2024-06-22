@@ -7,7 +7,8 @@
   <img class="logo" src="/assets/perroSF.png" alt="Logo El Perro">
   <br>
   <div class="admin-info" *ngIf="user">
-    <img src="{{url+'usuarios/getimage/'+user.imagen}}" class="imagen" width="100">
+
+    <img src="{{url+'user/getimage/'+user.imagen}}" class="w-100">
     <p>{{ user.nombre }}</p>
   </div>
   <div class="card-container">

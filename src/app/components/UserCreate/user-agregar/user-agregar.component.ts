@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { User } from '../../../models/user';
 import { timer } from 'rxjs';
 import { UserService } from '../../../services/user.service'; 
-import { RouterModule } from '@angular/router';
+import { RouterModule,Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,9 @@ export class UserAgregarComponent {
   public status:number;
   public fileName:string;
   constructor(
-    private UserService:UserService
+    private UserService:UserService,
+    private _router: Router,
+
   ){
     this.status=-1;
     this.user=new User(0,"","",1,"",1,"","","","")
@@ -26,6 +28,7 @@ export class UserAgregarComponent {
   }
 
   onSubmit(form:any){
+
     this.user.rol='user';
     this.UserService.create(this.user).subscribe({
       next:(response)=>{
@@ -33,6 +36,11 @@ export class UserAgregarComponent {
         if(response.status==201){
           form.reset();            
           this.changeStatus(0);
+
+          setTimeout(() => {
+          this._router.navigate(['users12']);
+          }, 100); 
+
         }else{
           this.changeStatus(1);
         }

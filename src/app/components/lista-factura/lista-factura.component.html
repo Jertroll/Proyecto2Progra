@@ -1,0 +1,28 @@
+<div>
+    <h6>Listado de Facturas</h6>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Fecha de Emisión</th>
+          <th>Nombre de la Tienda</th>
+          <th>ID Usuario</th>
+          <th>ID Compra</th>
+          <th>Subtotal</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills">
+          <td>{{ bill.id }}</td>
+          <td>{{ bill.fechaEmision }}</td>
+          <td>{{ bill.nomTienda }}</td>
+          <td>{{ bill.idUsuario }}</td>
+          <td>{{ bill.idCompra }}</td>
+          <td>{{ bill.subTotal }}</td>
+          <td>{{ bill.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

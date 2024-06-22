@@ -1,10 +1,10 @@
 .card-formulario {
     font-family: 'Roboto', sans-serif;
-    background-color: #efb810; /* Color de fondo blanco */
+    background-color: #ac9826; /* Color de fondo blanco */
     border-radius: 5px; /* Bordes redondeados */
-    box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 10px 1px rgba(27, 26, 26, 0.2);
     padding: 20px; /* Espaciado interno reducido */
-    width: 26%; /* Ajustar el ancho del contenedor padre */
+    width: 40%; /* Ajustar el ancho del contenedor padre */
     margin: auto; /* Centrar la tarjeta */
 }
 
@@ -20,7 +20,7 @@
 
 .btn-centrado {
     display: block; /* Hacer que el botón sea un bloque para permitir márgenes automáticos */
-    margin: 20px auto; /* Margen superior e inferior de 20px y centrado horizontalmente */
+    margin: 30px auto; /* Margen superior e inferior de 20px y centrado horizontalmente */
 }
 
 .logo{

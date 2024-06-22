@@ -1,0 +1,28 @@
+/* Estilo para la tabla */
+h6 {
+    color: black;
+    font-size: 2rem; /* Tamaño del título */
+    text-align: center;
+    margin-bottom: 1rem; /* Espacio en la parte inferior del título */
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  thead {
+    background-color: #f2f2f2;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 4px;
+    text-align: center;
+  }
+  
+  th {
+    background-color: #446149;
+    color: white;
+  }
+ 

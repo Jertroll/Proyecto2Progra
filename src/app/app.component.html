@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav style="background-color: #638363;" class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Mr WolfCr</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +23,15 @@
         </ul>   
         @if(!identity){
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a [routerLink]="['login']">Login</a></li>
-            <li class="nav-item"><a  [routerLink]="['register']">Registro</a></li>
-
-            <li class="nav-item"><a  [routerLink]="['produagregar']">Producto</a></li>
-            <li class="nav-item"><a  [routerLink]="['prudutos']">Productos</a></li>
-            <li class="nav-item"><a  [routerLink]="['compras']">Compras</a></li>
-            <li class="nav-item"><a  [routerLink]="['catalogo']">Catalogo</a></li>
-            <li class="nav-item"><a  [routerLink]="['Admin']">Admin</a></li> 
+            <li class="nav-item"><a [routerLink]="['login']" style="color: white; text-decoration: none;">Login</a></li>
+            <li class="nav-item"><a [routerLink]="['register']" style="color: white; text-decoration: none;">Registro</a></li>
+            <li class="nav-item"><a [routerLink]="['produagregar']" style="color: white; text-decoration: none;">Producto</a></li>
+            <li class="nav-item"><a [routerLink]="['prudutos']" style="color: white; text-decoration: none;">Productos</a></li>
+            <li class="nav-item"><a [routerLink]="['compras']" style="color: white; text-decoration: none;">Compras</a></li>
+            <li class="nav-item"><a [routerLink]="['catalogo']" style="color: white; text-decoration: none;">Catalogo</a></li>
+            <li class="nav-item"><a [routerLink]="['Admin']" style="color: white; text-decoration: none;">Admin</a></li>
           </ul>
+          
         }    
         @else {
           <ul class="navbar-nav">
@@ -55,78 +55,75 @@
             </li>
           </ul>
         }    
-        
-
-
       </div>
     </div>
   </nav>
   <router-outlet></router-outlet>
   <br> <br>
-<!-- Footer -->
-<footer class="text-white text-center text-lg-start" style="background-color: #638363;">
-  <!-- Grid container -->
-  <div class="container-fluid p-4">
-    <!--Grid row-->
-    <div class="row mt-4">
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-4">Acerca de Nosotros</h5>
-        <p>
-          Somos una empresa nacional que comenzó su venta de camisetas en línea en el año 2019, hoy en día estamos ubicados en Grecia centro en tienda física, hay gran variedad de productos como camisas de vestir, bañadores para hombre, mujer y niños, lentes, camisas corte laser y shorts de mezclilla.
-        </p>
-      </div>
-      <!--Grid column-->
+  <!-- Footer -->
+  <footer class="text-white text-center text-lg-start" style="background-color: #638363;">
+    <!-- Grid container -->
+    <div class="container-fluid p-4">
+      <!--Grid row-->
+      <div class="row mt-4">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Acerca de Nosotros</h5>
+          <p>
+            Somos una empresa nacional que comenzó su venta de camisetas en línea en el año 2019, hoy en día estamos ubicados en Grecia centro en tienda física, hay gran variedad de productos como camisas de vestir, bañadores para hombre, mujer y niños, lentes, camisas corte laser y shorts de mezclilla.
+          </p>
+        </div>
+        <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-4 pb-1" style="margin-left: 50px;">Ubicacion</h5>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4 pb-1" style="margin-left: 50px;">Ubicacion</h5>
 
-        <ul class="fa-ul" style="margin-left: 1.65em;">
-          <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Guanacate, Liberia , CR</span>
-          </li>
-          <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">MrWolfCR.com</span>
-          </li>
-          <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 506 8557-4555</span>
-          </li>
-          <li class="mb-3">
-            <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 506 6100-7981</span>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
+          <ul class="fa-ul" style="margin-left: 1.65em;">
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Guanacate, Liberia , CR</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">MrWolfCR.com</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 506 8557-4555</span>
+            </li>
+            <li class="mb-3">
+              <span class="fa-li"><i class="fas fa-print"></i></span><span class="ms-2">+ 506 6100-7981</span>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-4">Horarios de Atencion al Cliente</h5>
-        <table class="table text-center text-white">
-          <tbody class="font-weight-normal">
-            <tr>
-              <td>Lunes - Viernes:</td>
-              <td>8 am - 9 pm</td>
-            </tr>
-            <tr>
-              <td>Sabado - Domingo:</td>
-              <td>8 am - 6 pm</td>
-            </tr>
-          </tbody>
-        </table>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-4">Horarios de Atencion al Cliente</h5>
+          <table class="table text-center text-white">
+            <tbody class="font-weight-normal">
+              <tr>
+                <td>Lunes - Viernes:</td>
+                <td>8 am - 9 pm</td>
+              </tr>
+              <tr>
+                <td>Sabado - Domingo:</td>
+                <td>8 am - 6 pm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!--Grid column-->
       </div>
-      <!--Grid column-->
+      <!--Grid row-->
     </div>
-    <!--Grid row-->
-  </div>
-  <!-- Grid container -->
+    <!-- Grid container -->
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2024 Copyright:
-    <a class="text-white" href="https://MrWolfCR.com/">https://MrWolfCR.com/</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-<!-- End of Footer -->
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2024 Copyright:
+      <a class="text-white" href="https://MrWolfCR.com/">https://MrWolfCR.com/</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- End of Footer -->
 </div>

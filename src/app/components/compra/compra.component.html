@@ -1,67 +1,58 @@
 <div class="compra-container">
-    <h1>Lista de Compras</h1>
-    <div class="search-bar">
-      <input [(ngModel)]="searchTerm" placeholder="Buscar compras..." />
-    </div>
+  <h1>Lista de Compras</h1>
   
-    <!-- Verifica si hay compras para mostrar -->
-    <div *ngIf="compras.length > 0; else noCompras">
-      <table class="table">
-        <thead>
+  <div *ngIf="compras.length > 0; else noCompras">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Compra</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Usuario</th>
+          <th>Detalles</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let compra of compras">
           <tr>
-            <th>ID Compra</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Usuario</th>
-            <th>Detalles</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Itera sobre cada compra y muestra sus detalles básicos -->
-          <tr *ngFor="let compra of compras | filter: searchTerm">
             <td>{{ compra.idCompra }}</td>
-            <td>{{ compra.fecha | date }}</td>
+            <td>{{ compra.fecha }}</td>
             <td>{{ compra.estadoCompra }}</td>
             <td>{{ compra.idUsuario }}</td>
             <td>
-              <!-- Botón para mostrar o ocultar detalles -->
-              <button (click)="toggleDetalles(compra)">Ver Detalles</button>
+              <button (click)="toggleDetalles(compra)">
+                {{ compra.showDetails ? 'Ocultar Detalles' : 'Ver Detalles' }}
+              </button>
             </td>
           </tr>
-          <!-- Muestra los detalles adicionales de la compra si showDetails es true -->
-          <ng-container *ngFor="let compra of compras">
-            <tr *ngIf="compra.showDetails" class="detalle-row">
-              <td colspan="5">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID Producto</th>
-                      <th>Nombre</th>
-                      <th>Cantidad</th>
-                      <th>Precio Unitario</th>
-                      <th>Subtotal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Itera sobre los detalles de la compra para mostrar cada uno -->
-                    <tr *ngFor="let detalle of compra.detalles">
-                      <td>{{ detalle.idProducto }}</td>
-                      <td>{{ detalle.cantidad }}</td>
-                      <td>{{ detalle.precioUnitario | currency }}</td>
-                      <td>{{ detalle.subTotal | currency }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </div>
-  
-    <!-- Mensaje para cuando no hay compras -->
-    <ng-template #noCompras>
-      <p>No se encontraron compras.</p>
-    </ng-template>
+          <tr *ngIf="compra.showDetails">
+            <td colspan="5">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detalle of compra.detalles">
+                    <td>{{ detalle.idProducto }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.precioUnitario }}</td>
+                    <td>{{ detalle.subTotal }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
-  
+
+  <ng-template #noCompras>
+    <p>No se encontraron compras.</p>
+  </ng-template>
+</div>

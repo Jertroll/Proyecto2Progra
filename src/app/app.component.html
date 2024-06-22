@@ -36,14 +36,7 @@
 
         <li class="nav-item"><a [routerLink]="['/Admin2']" style="color: white; text-decoration: none;">Admin</a></li>
 
-        <li class="nav-item"><a [routerLink]="['/produagregar']"
-            style="color: white; text-decoration: none;">Producto</a></li>
-
-        <li class="nav-item"><a [routerLink]="['/prudutos']" style="color: white; text-decoration: none;">Productos</a>
-        </li>
-
-
-
+  
         <li class="nav-item d-flex align-items-center">
           <a class="nav-link ms-2" (click)="confirmSignOut()">
             {{ identity.nombre }}
@@ -53,7 +46,7 @@
 
         }@else {
 
-<li class="nav-item"><a [routerLink]="['compras']" style="color: white; text-decoration: none;">Compras</a></li>
+<li class="nav-item"><a [routerLink]="['/compras']" style="color: white; text-decoration: none;">Compras</a></li>
 
         <li class="nav-item"><a [routerLink]="['catalogo']" style="color: white; text-decoration: none;">Catalogo</a>
         </li>

@@ -2,7 +2,8 @@ import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { server } from "./global";
 import { Compra } from "../models/compra";
-import { Observable,throwError } from "rxjs";
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,15 @@ export class CompraService {
   ){
       this.urlAPI=server.Url
   }
-  obtenerCompras(): Observable<{ status: number, message: string, data:Compra[] }> {
-      return this._http.get<{ status: number, message: string, data: Compra[] }>(`${this.urlAPI}compra`);
+  obtenerCompras(): Observable<Compra[]> {
+    return this._http.get<Compra[]>(`${this.urlAPI}compra`).pipe(
+      catchError((error: any) => {
+        console.error('Error al obtener compras:', error);
+        return throwError(error);
+      })
+    );
   }
+
   crear(compra: Compra, token: any): Observable<any> {
     const compraJson = JSON.stringify(compra);
     const params = 'data=' + compraJson;

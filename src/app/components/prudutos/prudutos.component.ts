@@ -64,6 +64,7 @@ export class PrudutosComponent implements OnInit {
             console.log(response);
             this.obtenerProductos();
             this.changeStatus(0);
+            window.location.reload(); // Recarga la página automáticamente
           },
           error: (error: Error) => {
             this.changeStatus(2);

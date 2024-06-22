@@ -1,44 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { server } from '../../../services/global'; 
+import { ButtonModule } from 'primeng/button';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
-import { User } from '../../../models/User';
-import { UserService } from '../../../services/user.component';
+import { User } from '../../../models/user';
+import { UserService } from '../../../services/user.service'; 
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 
 @Component({
   selector: 'app-userup',
   standalone: true,
   imports: [
-    FormsModule,
-    CommonModule,
-    MatIconModule,
-    NgFor,
-    MatButtonModule,
-    RouterModule
+    FormsModule, CommonModule,MatIconModule, ButtonModule, RouterLink, RouterModule, RouterOutlet
   ],
   styleUrls: ['./userup.component.css'],
   templateUrl: './userup.component.html'
 })
 export class UserupComponent implements OnInit {
+  status: number = -1;
   searchTerm: string = '';
   users: User[] = [];
   user: User = new User(0, '', '', 0, '', 0, '', '', '','');
   editando: boolean = false;
-  status: number = -1;
+  public url:string;
+  
 
-  constructor(private userService: UserService, public dialog: MatDialog) {}
+  constructor(private userService: UserService, public dialog: MatDialog) {
+    this.url=server.Url
+  }
 
   ngOnInit(): void {
     this.obtenerUsers();
   }
 
   obtenerUsers(): void {
-    this.userService.getIdentityFromAPI().subscribe(
+    this.userService.obtenerusers().subscribe(
       (response) => {
         if (response && response.data) {
           this.users = response.data;

@@ -21,23 +21,19 @@ export const routes: Routes = [
 {path: '', component:HomeComponent},
 {path: 'home', component:HomeComponent},
 {path: 'login', component:LoginComponent},
+{path: 'Admin2', component:AdminPanelComponent},
 {path: 'register', component:RegisterComponent},
 {path: 'produagregar', component:ProduagregarComponent},
 {path: 'prudutos', component:PrudutosComponent},
-{path: 'Admin2', component:AdminPanelComponent},
 {path: 'catalogo', component:CatalogoComponent},
 {path: 'carrito', component:CarritoComponent},
-
-
 {path: 'compras',component:CompraComponent},
-
-{ path: 'facturas', component: ListadoFacturasComponent },
+{path: 'facturas', component: ListadoFacturasComponent },
 {path: "userRUD", component:UserAgregarComponent},
-
 {path: 'users12', component:UserupComponent},
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
-{path: '**', redirectTo: '/home' },
+{path: '**', redirectTo: '/home' }
 
 
 

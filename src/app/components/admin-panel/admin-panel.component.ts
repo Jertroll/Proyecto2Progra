@@ -1,22 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule, RouterOutlet, RouterLink } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
+import { NgIf } from '@angular/common';
+import { server } from '../../services/global';
+
 @Component({
   selector: 'app-admin-panel',
   standalone: true,
-  imports: [    
-    RouterModule, // Añadir esta línea
+  imports: [
+    RouterModule,
     RouterOutlet,
     RouterLink,
     FormsModule,
     CardModule,
-    ButtonModule],
+    ButtonModule,
+    NgIf
+  ],
   templateUrl: './admin-panel.component.html',
-  styleUrl: './admin-panel.component.css'
+  styleUrls: ['./admin-panel.component.css']
 })
-export class AdminPanelComponent {
+export class AdminPanelComponent implements OnInit {
+  user: User | null = null;
+  public url: string;
 
-  
+  constructor(private userService: UserService) {
+    this.url = server.Url;
+  }
+
+  ngOnInit(): void {
+    this.user = this.userService.getIdentityFromStorage();
+    if (this.user && this.user.imagen) {
+      this.loadUserImage(this.user.imagen);
+    }
+  }
+
+  loadUserImage(filename: string): void {
+    this.userService.getImage(filename).subscribe(
+      imageBlob => {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.user!.imagen = e.target.result;
+        };
+        reader.readAsDataURL(imageBlob);
+      },
+      error => {
+        console.error('Error al cargar la imagen del usuario:', error);
+      }
+    );
+  }
 }

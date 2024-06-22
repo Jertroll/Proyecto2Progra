@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../../models/user';
 import { timer } from 'rxjs';
-import { UserService } from '../../../services/user.component';
+import { UserService } from '../../../services/user.service'; 
 import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-register',

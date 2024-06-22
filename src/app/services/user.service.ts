@@ -51,6 +51,25 @@ create(user:User):Observable<any>{
     }
     return this._http.post(this.urlAPI+'user/register',params,options);
 }
+updateUser(user: User): Observable<any> {
+  let userJsonJson = JSON.stringify(user);
+  let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+  let options = {
+    headers
+  }
+  const body = new URLSearchParams();
+
+   body.set('nombre', user.nombre);
+   body.set('apellido', user.apellido.toString());
+   body.set('telefono', user.telefono.toString());
+   body.set('direccion', user.direccion);
+   body.set('cedula', user.cedula.toString());
+   body.set('rol', user.rol);
+   body.set('email', user.email);
+   body.set('password', user.password);
+
+return this._http.put(`${this.urlAPI}user/${user.id}`, body.toString(), { headers });
+}
 
 buscarUserPorId(id: number): Observable<User> {
     return this._http.get<{ status: number, message: string, user: User }>(`${this.urlAPI}user/${id}`)
@@ -81,5 +100,8 @@ getIdentityFromStorage() {
     }
     return null;
   }
-  
+
+deliteUser(id: number): Observable<any> {
+    return this._http.delete(`${this.urlAPI}user/${id}`);
+  }
 }

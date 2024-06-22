@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { User } from '../../../models/user';
 
+import { User } from '../../../models/user'; 
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 

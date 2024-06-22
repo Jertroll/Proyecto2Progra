@@ -1,17 +1,17 @@
-<div class="search-container">
+<div>
   <input type="text" placeholder="Buscar usuario..." [(ngModel)]="searchTerm" class="search-input">
   <button mat-button class="buscar" (click)="search()">
     <mat-icon>search</mat-icon>Buscar
   </button>
-  <button mat-button class="user-agregar" [routerLink]="['/user-agregar']">
-    <mat-icon>add</mat-icon>Agregar usuario
-  </button>
-</div>
+  <div class="button-Panel">
+    <button mat-raised-button color="primary" [routerLink]="['/Admin']">
+      Regresar
+    </button>
+  </div>
 
-<h2>users</h2>
 
-<div class="table-container">
-  <table class="table">
+  <h2>Usuarios Registrados en el Sistema</h2>
+  <table>
     <thead>
       <tr>
         <th>ID</th>
@@ -22,6 +22,7 @@
         <th>Dirección</th>
         <th>Rol</th>
         <th>Email</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -47,9 +48,17 @@
       </ng-container>
       <ng-container *ngIf="!users || users.length === 0">
         <tr>
-          <td colspan="9">No hay users disponibles.</td>
+          <td colspan="8">No hay Usuarios disponibles.</td>
         </tr>
       </ng-container>
     </tbody>
   </table>
+  <div class="button-container">
+    <a [routerLink]="['/user-agregar']" class="p-button font-bold">
+      Agregar un Producto al Sistema
+    </a>
+  </div>
+
 </div>
+
+  

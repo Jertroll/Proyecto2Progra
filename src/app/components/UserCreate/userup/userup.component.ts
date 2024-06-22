@@ -5,7 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { server } from '../../../services/global'; 
 import { ButtonModule } from 'primeng/button';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet , Router} from '@angular/router';
+
 import { User } from '../../../models/user';
 import { UserService } from '../../../services/user.service'; 
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
@@ -28,7 +29,12 @@ export class UserupComponent implements OnInit {
   public url:string;
   
 
-  constructor(private userService: UserService, public dialog: MatDialog) {
+  constructor(
+    private userService: UserService, 
+    public dialog: MatDialog,
+    private _router: Router
+    
+  ) {
     this.url=server.Url
   }
 
@@ -37,8 +43,7 @@ export class UserupComponent implements OnInit {
   }
 
   obtenerUsers(): void {
-    this.userService.getIdentityFromAPI().subscribe(
-      (response) => {
+    this.userService.obtenerusers().subscribe((response) => {
         if (response && response.data) {
           this.users = response.data;
         }
@@ -60,21 +65,24 @@ export class UserupComponent implements OnInit {
       width: '600px',
       data: { ...user }
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.userService.updateUser(result).subscribe({
-          next: () => {
+          next: (response) => {
+            console.log(response);
             this.obtenerUsers();
             this.changeStatus(0);
+            
           },
-          error: () => {
+          error: (error: Error) => {
             this.changeStatus(2);
           }
         });
       }
     });
   }
+  
 
   search(): void {
     if (this.searchTerm.trim() !== '') {

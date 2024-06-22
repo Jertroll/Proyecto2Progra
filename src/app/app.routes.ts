@@ -8,9 +8,12 @@ import { PrudutosComponent } from './components/prudutos/prudutos.component';
 import { UserAgregarComponent } from './components/UserCreate/user-agregar/user-agregar.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+
+
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { UserupComponent } from './components/UserCreate/userup/userup.component';
 import { ListadoFacturasComponent } from './components/lista-factura/lista-factura.component';
+
 
 
 export const routes: Routes = [
@@ -26,10 +29,16 @@ export const routes: Routes = [
 {path: 'carrito', component:CarritoComponent},
 { path: 'facturas', component: ListadoFacturasComponent },
 
+
+{path: "userRUD", component:UserAgregarComponent},
+
+{path: 'users12', component:UserupComponent},
+
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
 {path: '**', redirectTo: '/home' },
-{path: 'users12', component:UserupComponent}
+
+{path: 'Compras',component:CompraComponent}
 
 
 ];

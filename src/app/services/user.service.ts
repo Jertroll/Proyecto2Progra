@@ -70,6 +70,7 @@ updateUser(user: User): Observable<any> {
    body.set('rol', user.rol);
    body.set('email', user.email);
    body.set('password', user.password);
+   body.set('imagen', user.imagen);
 
 return this._http.put(`${this.urlAPI}user/${user.id}`, body.toString(), { headers });
 }

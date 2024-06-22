@@ -25,6 +25,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary mt-2" [disabled]="compraForm.invalid">Comprar</button>
+      <button type="button" class="btn btn-info mt-2" (click)="mostrarFactura(facturaId)" [disabled]="!bill.id">Ver Factura</button>
   </form>
   <div *ngIf="mostrarInfoFactura" class="alert alert-info mt-3">
     <h4>Información de la Factura</h4>

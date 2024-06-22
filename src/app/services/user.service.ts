@@ -40,7 +40,7 @@ getIdentityFromAPI():Observable<any>{
     let options={
         headers
     }
-    return this._http.get(this.urlAPI+'client/user/getidentity',options);
+    return this._http.get(this.urlAPI+'user/getidentity',options);
     
 }           
 

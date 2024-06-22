@@ -29,9 +29,9 @@ export class ProduagregarComponent {
         console.log(response);
         if(response.status==200){
           form.reset();            
-          this.changeStatus(0);
-        }else{
           this.changeStatus(1);
+        }else{
+          this.changeStatus(0);
         }
       },
       error:(error:Error)=>{

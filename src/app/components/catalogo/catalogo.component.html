@@ -23,7 +23,9 @@
 
   <div class="catalogo">
     <input type="text" placeholder="Buscar prenda..." [(ngModel)]="buscaNom">
-    <button mat-button class="buscar" (click)="buscar()"><mat-icon>search</mat-icon>Buscar</button>
+    <button mat-button class="buscar" (click)="buscar()">
+      <mat-icon>search</mat-icon>Buscar
+    </button>
     <div class="productos">
       <mat-card class="producto" *ngFor="let producto of productosFiltrados">
         <mat-card-content class="contenido">
@@ -32,9 +34,9 @@
           </div>
           <div class="detalle">
             <h3>{{ producto.nombre }}</h3>
-            <p>Descripcion:{{ producto.descripcion }}</p>
-            <p>Estado:{{ producto.estado }}</p>
-            <p>Talla:{{ producto.talla }}</p>
+            <p>Descripcion: {{ producto.descripcion }}</p>
+            <p>Estado: {{ producto.estado }}</p>
+            <p>Talla: {{ producto.talla }}</p>
             <p>Precio: ${{ producto.precio }}</p>
             <button mat-raised-button color="primary" class="btn-agregar" (click)="agregarAlCarrito(producto)">Agregar al Carrito</button>
           </div>

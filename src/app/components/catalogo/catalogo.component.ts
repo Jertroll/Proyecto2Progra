@@ -41,6 +41,7 @@ export class CatalogoComponent implements OnInit{
     //this.producto = new Producto(0, "", 0, "", "", "disponible", "");
     this.url=server.Url
     this.carritoId=0;
+    this.status = -1; 
     this.token=this.userService.getToken();
   }
   ngOnInit(): void {

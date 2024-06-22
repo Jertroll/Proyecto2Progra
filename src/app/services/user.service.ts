@@ -76,7 +76,7 @@ buscarUserPorId(id: number): Observable<User> {
     return null
 }
 getToken(){
-    return sessionStorage.getItem('token')        
+    return sessionStorage.getItem('token')  || '';      
 }
 obtenerusers(): Observable<{ status: number, message: string, data: User[] }> {
     return this._http.get<{ status: number, message: string, data: User[] }>(`${this.urlAPI}user`);

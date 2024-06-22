@@ -6,7 +6,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProduagregarComponent } from './components/produagregar/produagregar.component';
 import { PrudutosComponent } from './components/prudutos/prudutos.component';
 import { UserAgregarComponent } from './components/UserCreate/user-agregar/user-agregar.component';
-
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 export const routes: Routes = [

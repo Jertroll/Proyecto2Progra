@@ -2,83 +2,86 @@
 .editProdu {
   padding: 20px;
   font-family: Arial, sans-serif;
-  max-width: 1000%; /* Ajustar el ancho máximo del contenedor principal */
-  width: 100%; 
-  margin: 0 auto; 
-  }
+  max-width: 900px; /* Ajustar el ancho máximo del contenedor principal */
+  width: 100%;
+  margin: 0 auto;
+}
 
-  h4{
-    color: black;
-    font-size: 1.5rem; 
-    text-align: center;
-    margin-bottom: 1rem; /* Espacio en la parte inferior del título */
-  }
-  
-  .col-md-8 {
-    max-width: 900px; /* Ancho máximo del formulario */
-    margin: 0 auto; /* Centra horizontalmente */
-    padding: 20px; /* Añade espacio interno */
-  }
-  
-  .mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* Estilos para el grid del formulario */
-  .form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+h4 {
+  color: black;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem; /* Espacio en la parte inferior del título */
+}
 
-  }
-  
-  /* Estilos para los grupos de formulario */
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
+.col-md-8 {
+  max-width: 100%; /* Ancho máximo del formulario */
+  margin: 0 auto; /* Centra horizontalmente */
+  padding: 20px; /* Añade espacio interno */
+}
 
-  label {
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  /* Estilos para los inputs del formulario */
-  input[type="text"],
-  input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  button[mat-button] {
-    margin: 13px 4px 20px 0;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
-  button[mat-button]:first-child {
-    background-color: #d82013; 
-    color: white;
-  }
-  
-  button[mat-button]:last-child {
-    background-color: #40a743; 
-    color: white;
-  }
-  
+/* Estilos para el grid del formulario */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 
-  button[mat-button]:hover {
-    opacity: 0.9;
-  }
-  
+/* Estilos para los grupos de formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos para los inputs del formulario */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button[mat-button] {
+  margin: 13px 4px 20px 0;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+button[mat-button].btn-danger {
+  background-color: #d82013;
+  color: white;
+}
+
+button[mat-button].btn-success {
+  background-color: #40a743;
+  color: white;
+}
+
+button[mat-button]:hover {
+  opacity: 0.9;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group input[type="text"] {
+  flex: 1;
+}
+
+.input-group button {
+  margin-left: 10px;
+}

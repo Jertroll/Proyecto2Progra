@@ -52,7 +52,7 @@ create(user:User):Observable<any>{
     let options={
         headers
     }
-    return this._http.post(this.urlAPI+'user/register',params,options);
+    return this._http.post(this.urlAPI+'user',params,options);
 }
 updateUser(user: User): Observable<any> {
   let userJsonJson = JSON.stringify(user);
@@ -70,6 +70,7 @@ updateUser(user: User): Observable<any> {
    body.set('rol', user.rol);
    body.set('email', user.email);
    body.set('password', user.password);
+   body.set('imagen', user.imagen);
 
 return this._http.put(`${this.urlAPI}user/${user.id}`, body.toString(), { headers });
 }

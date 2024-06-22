@@ -38,8 +38,7 @@ export class UserupComponent implements OnInit {
   }
 
   obtenerUsers(): void {
-    this.userService.obtenerusers().subscribe(
-      (response) => {
+    this.userService.obtenerusers().subscribe((response) => {
         if (response && response.data) {
           this.users = response.data;
         }
@@ -65,11 +64,12 @@ export class UserupComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.userService.updateUser(result).subscribe({
-          next: () => {
+          next: (response) => {
+            console.log(response);
             this.obtenerUsers();
             this.changeStatus(0);
           },
-          error: () => {
+          error: (error: Error) => {
             this.changeStatus(2);
           }
         });

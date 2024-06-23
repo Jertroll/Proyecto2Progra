@@ -35,21 +35,24 @@ public bills: any[]=[];
 
   getUserBills(): void {
    
-      this.billService.getUserBills().subscribe(
-        response => {
-          if (response.status === 200) {
-            console.log(response.data)
-           this.bills = response.data;
-          } else {
-           // this.errorMessage = response.message;
-          }
-        },
-        error => {
-          //this.errorMessage = 'Error al obtener las facturas del usuario: ' + (error.error.message || error.message);
+    this.billService.getUserBills().subscribe(
+      response => {
+        if (response.status === 200) {
+          console.log(response.data);
+          this.bills = response.data;
+        } else {
+          // this.errorMessage = response.message;
         }
-      );
-   
+      },
+      error => {
+        console.error('Error al obtener las facturas del usuario:', error);
+        // this.errorMessage = 'Error al obtener las facturas del usuario: ' + (error.error.message || error.message);
+      }
+    );
+    
   }
+
+  
   openDetailsDialog(detalles: any): void {
     this.dialog.open(FacturaDetalleComponent, {
       width: '600px',

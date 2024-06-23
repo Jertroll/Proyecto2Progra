@@ -4,7 +4,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import { User } from '../../models/User';
 import { NgIf } from '@angular/common';
 import { server } from '../../services/global';
 

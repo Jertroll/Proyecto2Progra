@@ -1,72 +1,54 @@
 <div class="container-fluid">
-  <nav style="background-color: #638363;" class="navbar navbar-expand-lg">
+  <nav style="background-color: #12411c;" class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Mr WolfCr</a>
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/perroSF.png" alt="Profile Image" class="profile-image me-2" style="width: 40px; height: 40px;">
+        <span class="mr-wolfcr-text">Mr WolfCr</span>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <div class="subnav">
-              <button class="subnav-btn">Categorias</button>
-              <div class="subnav-content">
-                <span>
-                  <a></a>
-                </span>
-              </div>
-            </div>
-          </li>
-        </ul>
-
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
         @if(!identity){
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item"><a [routerLink]="['/login']" style="color: white; text-decoration: none;">Login</a></li>
-
-
         </ul>
         } @else {
-
         @if(identity.rol === "admin"){
-
         <li class="nav-item"><a [routerLink]="['/Admin2']" style="color: white; text-decoration: none;">Admin</a></li>
-
-  
         <li class="nav-item d-flex align-items-center">
           <a class="nav-link ms-2" (click)="confirmSignOut()">
             {{ identity.nombre }}
           </a>
-          
         </li>
-
         }@else {
 
+
 <li class="nav-item"><a [routerLink]="['/compras3']" style="color: white; text-decoration: none;">Compras</a></li>
+<li class="nav-item"><a [routerLink]="['/facturasUser']" style="color: white; text-decoration: none;">Facturas</a></li>
+
+
 
         <li class="nav-item"><a [routerLink]="['catalogo']" style="color: white; text-decoration: none;">Catalogo</a>
         </li>
 
-        <li class="nav-item d-flex align-items-center">
+        <li class="nav-item d-flex align-items-center" >
           <a class="nav-link ms-2" (click)="confirmSignOut()">
             {{ identity.nombre }}
           </a>
         </li>
-
         }
         }
-
       </div>
     </div>
   </nav>
   <router-outlet></router-outlet>
   <br> <br>
   <!-- Footer -->
-  <footer class="text-white text-center text-lg-start" style="background-color: #638363;">
+  <footer class="text-white text-center text-lg-start" style="background-color: #12411c;">
     <!-- Grid container -->
     <div class="container-fluid p-4">
       <!--Grid row-->
@@ -85,7 +67,6 @@
         <!--Grid column-->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-4 pb-1" style="margin-left: 50px;">Ubicacion</h5>
-
           <ul class="fa-ul" style="margin-left: 1.65em;">
             <li class="mb-3">
               <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2">Guanacate, Liberia , CR</span>

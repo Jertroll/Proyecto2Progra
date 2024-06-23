@@ -52,3 +52,9 @@ h6{
     padding-left: 60px;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
+
+  .textP-t{
+    margin:2px; 
+    padding: 2px;
+    text-align:center;
+  }

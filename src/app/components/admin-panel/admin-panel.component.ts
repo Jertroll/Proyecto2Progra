@@ -34,22 +34,9 @@ export class AdminPanelComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.userService.getIdentityFromStorage();
     if (this.user && this.user.imagen) {
-      this.loadUserImage(this.user.imagen);
+
     }
   }
 
-  loadUserImage(filename: string): void {
-    this.userService.getImage(filename).subscribe(
-      imageBlob => {
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.user!.imagen = e.target.result;
-        };
-        reader.readAsDataURL(imageBlob);
-      },
-      error => {
-        console.error('Error al cargar la imagen del usuario:', error);
-      }
-    );
-  }
+  
 }

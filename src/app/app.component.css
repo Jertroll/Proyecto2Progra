@@ -13,7 +13,7 @@
     text-decoration: none;
 }
 .navbar a:hover, .subnav:hover{
-    background-color: #8db696;
+    background-color: #1e5c2b;
 }
 
 .subnav {
@@ -24,7 +24,7 @@
     font-size: 1.2em;
     border: none;
     outline: none;
-    color: rgb(7, 7, 7);
+    color: rgb(255, 255, 255);
     padding: 14px 16px;
     background-color: inherit;
     margin: 0;
@@ -51,6 +51,10 @@
     display: block;
 }
 
+.nav-link {
+    color: white;
+  }
+
 footer {
     width: 100%;
     background-color: #23242a;
@@ -62,10 +66,12 @@ footer a {
     text-decoration: none;
 }
 
-.mr-wolfcr-text {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 1.5em; 
-    color: white
+.navbar-brand,
+.nav-link,
+.subnav-btn {
+  color: white;
+}
+.nav-link.active {
+    color: white;
   }
-  
   

@@ -1,49 +1,117 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px #ffffff;
+}
+.search-container {
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* Header Styles */
+.header {
+  display:contents;
+  justify-content:left;
+  padding: 40px;
+}
+.header button {
+  background-color:hwb(43 2% 5%);
+  border: none;
+  cursor: pointer;
+}
+
+/* Catalogo Styles */
+.catalogo {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.catalogo input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.catalogo .buscar {
+  padding: 10px 10px;
+  background-color: #2f6431;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.catalogo .buscar:hover {
+  background-color: #6aa06b;
+}
+
+/* Product Grid Styles */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  gap: 20px;
   padding: 20px;
 }
 
-.header {
-  display: flex;
-  justify-content: flex-end;
-  padding-bottom: 20px;
-}
-
-.catalogo {
-  margin-top: 20px;
-}
-
-.productos {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .producto {
-  width: 100%;
-  margin-bottom: 20px;
-}
-
-.contenido {
-  display: flex;
-}
-
-.imagen-container {
-  flex: 0 0 100px; /* Ancho fijo para la imagen */
-  margin-right: 20px;
-}
-
-.imagen {
-  width: 200px;
-  height: 200px; 
-  object-fit: cover;
+  border: 1px solid #ddd;
+  padding: 10px;
   border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgb(236, 221, 3);
+  text-align:left;
 }
 
-.detalle {
-  flex: 1; 
-  display: flex;
-  flex-direction: column;
+.producto img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  filter: brightness(70%) contrast(125%);
+  margin-bottom: 10px;
 }
 
-.btn-agregar {
-  align-self: flex-end;
+.producto .contenido {
+  padding: 10px;
+}
+
+.producto h3 {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.producto p {
+  margin: 5px 0;
+}
+
+.producto .btn-agregar {
+  background-color: #0b110c;
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 2cqh;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.producto .btn-agregar:hover {
+  background-color: #85c288;
+}
+
+/* Specific Text Styles */
+.textP-g {
+  margin-top: 60px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Additional Styles */
+h6 {
+  padding-left: 60px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

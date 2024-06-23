@@ -1,3 +1,4 @@
+<br>
 <div class="container">
   <div class="header">
     <button mat-icon-button [routerLink]="['/carrito']">
@@ -10,6 +11,7 @@
     <button mat-button class="buscar" (click)="buscar()">
       <mat-icon>search</mat-icon>Buscar
     </button>
+    <br><br>
     <div class="productos">
       <mat-card class="producto" *ngFor="let producto of productosFiltrados">
         <mat-card-content class="contenido">
@@ -18,10 +20,10 @@
           </div>
           <div class="detalle">
             <h3>{{ producto.nombre }}</h3>
-            <p>Descripcion: {{ producto.descripcion }}</p>
             <p>Estado: {{ producto.estado }}</p>
             <p>Talla: {{ producto.talla }}</p>
             <p>Precio: ${{ producto.precio }}</p>
+            <p>{{ producto.descripcion }}</p>
             <button mat-raised-button color="primary" class="btn-agregar" (click)="agregarAlCarrito(producto)">Agregar al Carrito</button>
           </div>
         </mat-card-content>

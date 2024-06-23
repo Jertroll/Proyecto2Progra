@@ -15,7 +15,7 @@ export class BillService {
     this.urlAPI = server.Url;
   }
   obtenerFacturas(): Observable<{ status: number, message: string, data: Bill[] }> {
-    return this._http.get<{ status: number, message: string, data: Bill[] }>(`${this.urlAPI}bill`);
+    return this._http.get<{ status: number, message: string, data: Bill[] }>(`${this.urlAPI}bills`);
 }
 
 mostrarFactura(id: number): Observable<Bill> {
@@ -32,6 +32,21 @@ crear(idCompra: number, fechaEmision: string, nomTienda: string, token: any): Ob
   const headers = new HttpHeaders().set('bearertoken', token); // Aquí asumimos que token es de tipo any
   const body = { idCompra, fechaEmision, nomTienda };
   return this._http.post<any>(this.urlAPI + 'bill', body, { headers });
+}
+
+getUserBills(): Observable<any> {
+  let headers;
+    let ElPerroCR=sessionStorage.getItem('token');
+    if(ElPerroCR){
+        headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                                .set('ElPerroCR',ElPerroCR);            
+    }else{
+        headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+    }
+    let options={
+        headers
+    }
+  return this._http.get<any>(`${this.urlAPI}user-bills`, { headers });
 }
 
 }

@@ -1,0 +1,31 @@
+<div>
+  <h6>Listado de Facturas</h6>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha de Emisión</th>
+        <th>Nombre de la Tienda</th>
+        <th>Subtotal</th>
+        <th>Total</th>
+        <th>Ver detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (bill of bills; track $index) {
+      <tr For="let bill of bills">
+        <td>{{ bill.id }}</td>
+        <td>{{ bill.fechaEmision }}</td>
+        <td>{{ bill.nomTienda }}</td>
+        <td>{{ bill.subTotal }}</td>
+        <td>{{ bill.total }}</td>
+        <td>
+          <button mat-button (click)="openDetailsDialog(bill.compra.detalles)">
+            Ver detalles
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

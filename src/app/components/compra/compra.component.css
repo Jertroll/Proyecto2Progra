@@ -1,0 +1,56 @@
+/* compra.component.css */
+
+/* Estilo para el contenedor principal */
+.compra-container {
+    background-color: rgb(255, 255, 255); /* Fondo dorado */
+    color: rgb(0, 0, 0); /* Texto negro */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Sombra ligera */
+  }
+  
+  /* Estilo para el título "Lista de Compras" */
+  .compra-container h1 {
+    margin-bottom: 20px; /* Espacio inferior */
+  }
+  
+  /* Estilo para la tabla de compras */
+  .compra-container .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo para las filas de la tabla */
+  .compra-container .table th,
+  .compra-container .table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(105, 103, 103); /* Borde inferior negro */
+  }
+  
+  /* Estilo para el botón dentro de la tabla */
+  .compra-container .table button {
+    background-color: rgba(165, 156, 38, 0.966); /* Fondo negro */
+    color: rgb(255, 255, 255); /* Texto dorado */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  /* Estilo para las filas de detalles */
+  .compra-container .table .detalle-row {
+    background-color: rgb(0, 0, 0); /* Fondo negro */
+    color: rgb(243, 239, 15); /* Texto dorado */
+  }
+  
+  
+  .compra-container .table .detalle-row td {
+    padding: 5px;
+  }
+
+  .compra-container p {
+    color: rgb(3, 3, 3); 
+    font-style: italic;
+  }
+  

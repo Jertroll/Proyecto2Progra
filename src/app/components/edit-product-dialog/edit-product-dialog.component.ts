@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { timer } from 'rxjs';
 import { ProductoService } from '../../services/producto.service';
 import { server } from '../../services/global';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-edit-product-dialog',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgIf],
   templateUrl: './edit-product-dialog.component.html',
   styleUrls: ['./edit-product-dialog.component.css']
 })

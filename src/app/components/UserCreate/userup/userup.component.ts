@@ -7,7 +7,7 @@ import { server } from '../../../services/global';
 import { ButtonModule } from 'primeng/button';
 import { RouterLink, RouterModule, RouterOutlet , Router} from '@angular/router';
 
-import { User } from '../../../models/user';
+import { User } from '../../../models/User';
 import { UserService } from '../../../services/user.service'; 
 import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
 

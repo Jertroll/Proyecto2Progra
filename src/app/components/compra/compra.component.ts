@@ -1,15 +1,11 @@
-import { Component,NgModule, OnInit} from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { CompraService } from '../../services/compra.service';
 import { Compra } from '../../models/compra';
 import { server } from '../../services/global';
-import { FilterPipe } from '../../filter.pipe';
-import { DetalleCompra } from '../../models/detalleCompra';
 import { DetalleCompraService } from '../../services/detalle-compra.service';
+import { DetalleCompra } from '../../models/detalleCompra';
+import { NgFor, NgIf } from '@angular/common';
 
-
-// Interfaz extendida localmente
 interface CompraConDetalles extends Compra {
   showDetails: boolean;
   detalles: DetalleCompra[];
@@ -18,21 +14,15 @@ interface CompraConDetalles extends Compra {
 @Component({
   selector: 'app-compra',
   standalone: true,
-  imports: [FormsModule, CommonModule,FilterPipe],
+  imports: [NgIf, NgFor],
   templateUrl: './compra.component.html',
   styleUrls: ['./compra.component.css']
 })
 export class CompraComponent implements OnInit {
-  status: number;
-  searchTerm: string = '';
   compras: CompraConDetalles[] = [];
-  public url: string;
   error: string = '';
 
-  constructor(private compraService: CompraService, private detalleCompraService: DetalleCompraService) {
-    this.status = -1;
-    this.url = server.Url;
-  }
+  constructor(private compraService: CompraService, private detalleCompraService: DetalleCompraService) {}
 
   ngOnInit(): void {
     this.obtenerCompras();
@@ -57,21 +47,20 @@ export class CompraComponent implements OnInit {
       }
     );
   }
+
   toggleDetalles(compra: CompraConDetalles): void {
     compra.showDetails = !compra.showDetails;
     if (compra.showDetails && compra.detalles.length === 0) {
       this.detalleCompraService.obtenerDetalles(compra.idCompra).subscribe(
-        (response: any) => {
-          console.log(response)
+        (response) => {
           if (Array.isArray(response.data)) {
-            console.log(response.data)
             compra.detalles = response.data;
           } else {
             console.error('La respuesta no contiene un arreglo en la propiedad data:', response);
           }
         },
         (error) => {
-          console.error('Error al obtener detalles de la compra', error);
+          console.error('Error al obtener detalles de la compra:', error);
           this.error = 'Error al obtener detalles de la compra';
         }
       );

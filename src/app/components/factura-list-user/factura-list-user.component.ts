@@ -8,9 +8,8 @@ import { DetalleCompra } from '../../models/detalleCompra';
 import { DetalleCompraService } from '../../services/detalle-compra.service';
 import { server } from '../../services/global';
 import { UserService } from '../../services/user.service';
-
-
-
+import { MatDialog } from '@angular/material/dialog';
+import { FacturaDetalleComponent } from '../factura-detalle/factura-detalle.component';
 @Component({
   selector: 'app-factura-list-user',
   standalone: true,
@@ -19,36 +18,43 @@ import { UserService } from '../../services/user.service';
   styleUrl: './factura-list-user.component.css'
 })
 export class FacturaListUserComponent implements OnInit{
-private token;
-constructor(
+public bills: any[]=[];
+  constructor(
+  private userService: UserService,
+  private billService: BillService,
+  public dialog: MatDialog
 
-){
-  this.token=this.userService.getToken();
+ ){
 
-}
+
+ }
   ngOnInit(): void {
     this.getUserBills();
     
   }
 
   getUserBills(): void {
-    const token = this.authService.getToken(); // Asumiendo que tienes un método para obtener el token
-    if (token) {
-      this.billService.getUserBills(token).subscribe(
+   
+      this.billService.getUserBills().subscribe(
         response => {
           if (response.status === 200) {
-            this.bills = response.data;
+            console.log(response.data)
+           this.bills = response.data;
           } else {
-            this.errorMessage = response.message;
+           // this.errorMessage = response.message;
           }
         },
         error => {
-          this.errorMessage = 'Error al obtener las facturas del usuario: ' + (error.error.message || error.message);
+          //this.errorMessage = 'Error al obtener las facturas del usuario: ' + (error.error.message || error.message);
         }
       );
-    } else {
-      this.errorMessage = 'No se encontró el token de autenticación';
-    }
+   
+  }
+  openDetailsDialog(detalles: any): void {
+    this.dialog.open(FacturaDetalleComponent, {
+      width: '600px',
+      data: { detalles: detalles }
+    });
   }
 
 }

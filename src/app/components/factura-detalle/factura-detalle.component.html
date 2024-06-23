@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Detalles de la Compra</h2>
+<mat-dialog-content>
+  <table mat-table [dataSource]="data.detalles" class="mat-elevation-z8">
+    <ng-container matColumnDef="idProducto">
+      <th mat-header-cell *matHeaderCellDef> ID Producto </th>
+      <td mat-cell *matCellDef="let detalle"> {{detalle.idProducto}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+      <td mat-cell *matCellDef="let detalle"> {{detalle.cantidad}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="precioUnitario">
+      <th mat-header-cell *matHeaderCellDef> Precio Unitario </th>
+      <td mat-cell *matCellDef="let detalle"> {{detalle.precioUnitario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="subTotal">
+      <th mat-header-cell *matHeaderCellDef> Subtotal </th>
+      <td mat-cell *matCellDef="let detalle"> {{detalle.subTotal}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['idProducto', 'cantidad', 'precioUnitario', 'subTotal']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['idProducto', 'cantidad', 'precioUnitario', 'subTotal'];"></tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>
+

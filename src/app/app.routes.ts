@@ -12,6 +12,7 @@ import { CompraComponent } from './components/compra/compra.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { UserupComponent } from './components/UserCreate/userup/userup.component';
 import { ListadoFacturasComponent } from './components/lista-factura/lista-factura.component';
+import { FacturaListUserComponent } from './components/factura-list-user/factura-list-user.component';
 
 
 
@@ -32,6 +33,7 @@ export const routes: Routes = [
 {path: 'users12', component:UserupComponent},
 {path: 'user-agregar', component:UserAgregarComponent},
 {path: 'user/:id', component: UserAgregarComponent },
+{path:'facturasUser',component:FacturaListUserComponent},
 {path: '**', redirectTo: '/home' }
 
 ];

@@ -34,9 +34,19 @@ crear(idCompra: number, fechaEmision: string, nomTienda: string, token: any): Ob
   return this._http.post<any>(this.urlAPI + 'bill', body, { headers });
 }
 
-getUserBills(token: string): Observable<any> {
-  const headers = new HttpHeaders().set('bearertoken', token);
-  return this._http.get<any>(`${this.urlAPI}/user-bills`, { headers });
+getUserBills(): Observable<any> {
+  let headers;
+    let ElPerroCR=sessionStorage.getItem('token');
+    if(ElPerroCR){
+        headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded')
+                                .set('ElPerroCR',ElPerroCR);            
+    }else{
+        headers=new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');            
+    }
+    let options={
+        headers
+    }
+  return this._http.get<any>(`${this.urlAPI}user-bills`, { headers });
 }
 
 }

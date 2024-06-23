@@ -7,8 +7,7 @@ import { server } from '../../services/global';
 import { FilterPipe } from '../../filter.pipe';
 import { DetalleCompra } from '../../models/detalleCompra';
 import { DetalleCompraService } from '../../services/detalle-compra.service';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+
 
 // Interfaz extendida localmente
 interface CompraConDetalles extends Compra {

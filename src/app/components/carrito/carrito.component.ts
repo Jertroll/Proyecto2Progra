@@ -33,7 +33,7 @@ export class CarritoComponent implements OnInit {
   public url: string;
   private token: string | null = null;
   public compra: Compra = new Compra(0, 0, 0, "", "");
-  public bill: Bill = new Bill(0, 0, "", "", 0, 0, 0);
+  public bill: Bill = new Bill(0, 0, '', '', 0, 0, 0);
   public mostrarInfoFactura: boolean = false;
   public facturaId: number = 0;
 
@@ -53,6 +53,8 @@ export class CarritoComponent implements OnInit {
     this.obtenerProductosCarrito();
   }
 
+
+  
   obtenerProductosCarrito(): void {
     if (this.token) {
       this.carritoService.obtenerProductosCarrito(this.token).subscribe(
@@ -164,8 +166,9 @@ export class CarritoComponent implements OnInit {
   mostrarFactura(facturaId: number): void {
     this.billService.mostrarFactura(facturaId).subscribe(
       (response) => {
-        this.bill = response.bill; // Aquí se extrae la factura de la respuesta
-        this.mostrarInfoFactura = true;
+        this.bill = response.bill; // Asignación del objeto bill desde la respuesta
+        console.log('Factura obtenida:', this.bill);
+        // Lógica adicional para mostrar la factura en la interfaz de usuario
       },
       (error) => {
         console.error('Error obteniendo factura:', error);
